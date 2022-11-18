@@ -1,5 +1,5 @@
 # README
-## Membres du Groupe
+## Groupe Membres
 
 El Allaki Otmane otmane.el-allaki@etu.umontpellier.fr
 
