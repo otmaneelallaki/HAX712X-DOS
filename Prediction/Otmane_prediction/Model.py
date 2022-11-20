@@ -56,20 +56,15 @@ model_UC1res.predict(start="2022-12-08 00:00:00", end="2022-12-08 23:45:00")
 # %%
 
 pred = model_UC1res.predict(start="2021-11-06 06:00:00", end="2022-12-08 23:45:00")
-plt.figure(figsize=(18,6),dpi=200);
-
+f = plt.figure(figsize=(18,6),dpi=200);
 #setting title and size of title
 plt.suptitle('Unobserved Components model prediction Vs Real dataset', fontsize=20);
-
 #setting y axis label
 plt.ylabel('MW');
-
 #plotting trend component
 plt.plot(y_test, label='France Electric Power Energy consumption (MW)');
-
 #plotting linear model of trend component
 plt.plot(pred, label='Unobserved Components model prediction');
-
 
 plt.legend();
 # %%

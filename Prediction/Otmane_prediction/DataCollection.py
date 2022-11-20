@@ -1,35 +1,56 @@
-#%%
 import pandas as pd
 import datetime
 import numpy as np
+import pooch  # download data / avoid re-downloading
+import os
 
-# %%_________________________________________________________
 def data():
-    # link  for the data https://odre.opendatasoft.com/explore/dataset/eco2mix-national-cons-def/table/?disjunctive.nature&sort=-date_heure&refine.date_heure=2020
     #loading raw data 2019
-    link2019 = "/Users/mac/Downloads/eco2mix-national-cons-def_2019.csv"
+    url2019 = "https://bit.ly/3hVlwrl"
+    path_target = "./eco2mix-national-cons-def2019.csv"
+    path, fname = os.path.split(path_target)
+    pooch.retrieve(url2019, path=path, fname=fname, known_hash=None)  # if needed `pip install pooch`
+
     usecols2019=['Date', 'Heure', "Consommation (MW)"] # variables we needs
-    data2019 = pd.read_csv(link2019, usecols=usecols2019, sep = ";") # importin g our data
-
+    data2019 = pd.read_csv("./eco2mix-national-cons-def2019.csv",usecols=usecols2019, sep = ";") # importin g our data
+    
     #loading raw data 2020
-    link2020 = "/Users/mac/Downloads/eco2mix-national-cons-def_2020.csv"
+    url2020 = "https://bit.ly/3tLbMCE"
+    path_target = "./eco2mix-national-cons-def2020.csv"
+    path, fname = os.path.split(path_target)
+    pooch.retrieve(url2020, path=path, fname=fname, known_hash=None)  # if needed `pip install pooch`
+
     usecols2020=['Date', 'Heure', "Consommation (MW)"] # variables we needs
-    data2020 = pd.read_csv(link2020, usecols=usecols2020, sep = ";") # importin g our data
-
+    data2020 = pd.read_csv("./eco2mix-national-cons-def2020.csv",usecols=usecols2020, sep = ";") # importin g our data
+    
     #loading raw data 2021
-    link2021 = "/Users/mac/Downloads/eco2mix-national-cons-def_2021.csv"
+    url2021 = "https://bit.ly/3tId29N"
+    path_target = "./eco2mix-national-cons-def2021.csv"
+    path, fname = os.path.split(path_target)
+    pooch.retrieve(url2021, path=path, fname=fname, known_hash=None)  # if needed `pip install pooch`
+
     usecols2021=['Date', 'Heure', "Consommation (MW)"] # variables we needs
-    data2021 = pd.read_csv(link2021, usecols=usecols2021, sep = ";") # importin g our data
-
+    data2021 = pd.read_csv("./eco2mix-national-cons-def2021.csv",usecols=usecols2021, sep = ";") # importin g our data
+    
     #loading  half raw data 2022 
-    linkHalf2022 = "/Users/mac/Downloads/eco2mix-national-cons-def_half2022.csv"
-    usecolsHalf2022=['Date', 'Heure', "Consommation (MW)"] # variables we needs
-    dataHalf2022 = pd.read_csv(linkHalf2022, usecols=usecolsHalf2022, sep = ";") # importin g our data
+    url2022half = "https://bit.ly/3gisk1Y"
+    path_target = "./eco2mix-national-cons-def_half2022.csv"
+    path, fname = os.path.split(path_target)
+    pooch.retrieve(url2022half, path=path, fname=fname, known_hash=None)  # if needed `pip install pooch`
 
+    usecolshalf2022=['Date', 'Heure', "Consommation (MW)"] # variables we needs
+    dataHalf2022 = pd.read_csv("./eco2mix-national-cons-def_half2022.csv",usecols=usecolshalf2022, sep = ";") # importin g our data
+    
     #loading raw data 2022
-    link2022 = "/Users/mac/Downloads/eco2mix-national-cons-def_2022.csv"
+    url2022 = "https://bit.ly/3VgREnT"
+    path_target = "./eco2mix-national-cons-def2022.csv"
+    path, fname = os.path.split(path_target)
+    pooch.retrieve(url2022, path=path, fname=fname, known_hash=None)  # if needed `pip install pooch`
+
     usecols2022=['Date', 'Heure', "Consommation (MW)"] # variables we needs
-    data2022 = pd.read_csv(link2022, usecols=usecols2022, sep = ";") # importin g our data
+    data2022 = pd.read_csv("./eco2mix-national-cons-def2022.csv",usecols=usecols2022, sep = ";") # importin g our data
+    data2022.dropna(inplace=True) 
+    print(data2022.isna().sum())
 
     # __________________________________________________________________________
     time_improved = pd.to_datetime(data2019['Date'] +
@@ -112,4 +133,3 @@ def data():
     frames = [data2019, data2020, data2021, dataHalf2022, data2022]
     ts = pd.concat(frames) 
     return ts
-# %%
