@@ -12,7 +12,7 @@ plt.style.use('fivethirtyeight')
 from sklearn.model_selection import TimeSeriesSplit
 # %%
 os.getcwd()
-df = pd.read_csv('/Users/a/OneDrive/Bureau/DEVProject/eco2mix-national-cons-def_2019-2022.csv', sep = ",")
+df = pd.read_csv('./eco2mix-national-cons-def_2019-2022.csv', sep = ",")
 # %%
 df=df.rename(columns={"Time": "Time", "Consommation (MW)": "Consommation_MW"})
 # %%
@@ -25,7 +25,7 @@ df.plot(style='.',
         title='Consommation éléctéricité en MW')
 plt.show()
 # %%
-df['Consommation_MW'].plot(kind='hist', bins=500)
+df['Consommation (MW)'].plot(kind='hist', bins=500)
 
 # %%
 train=df.loc[df.index < '01-01-2021']
@@ -50,10 +50,10 @@ fold = 0
 for train_idx, val_idx in tss.split(df):
     train = df.iloc[train_idx]
     test = df.iloc[val_idx]
-    train['Consommation_MW'].plot(ax=axs[fold],
+    train['Consommation (MW)'].plot(ax=axs[fold],
                           label='Training Set',
                           title=f'Data Train/Test Split Fold {fold}')
-    test['Consommation_MW'].plot(ax=axs[fold],
+    test['Consommation (MW)'].plot(ax=axs[fold],
                          label='Test Set')
     axs[fold].axvline(test.index.min(), color='black', ls='--')
     fold += 1
@@ -79,7 +79,7 @@ df = create_features(df)
 
 # %%
 def add_lags(df):
-    target_map = df['Consommation_MW'].to_dict()
+    target_map = df['Consommation (MW)'].to_dict()
     df['lag1'] = (df.index - pd.Timedelta('364 days')).map(target_map)
     df['lag2'] = (df.index - pd.Timedelta('728 days')).map(target_map)
     df['lag3'] = (df.index - pd.Timedelta('1092 days')).map(target_map)
@@ -102,7 +102,7 @@ for train_idx, val_idx in tss.split(df):
 
     FEATURES = ['dayofyear', 'hour', 'dayofweek', 'quarter', 'month','year',
                 'lag1','lag2','lag3']
-    TARGET = 'Consommation_MW'
+    TARGET = 'Consommation (MW)'
 
     X_train = train[FEATURES]
     y_train = train[TARGET]
@@ -133,7 +133,7 @@ df = create_features(df)
 
 FEATURES = ['dayofyear', 'hour', 'dayofweek', 'quarter', 'month', 'year',
             'lag1','lag2','lag3']
-TARGET = 'Consommation_MW'
+TARGET = 'Consommation (MW)'
 
 X_all = df[FEATURES]
 y_all = df[TARGET]
@@ -175,7 +175,7 @@ prediction=future_w_features.loc[(future_w_features.index >= '2022-12-8') &  (fu
 
 
 # %%
-prediction=prediction.drop(columns=['Consommation_MW','hour',
+prediction=prediction.drop(columns=['Consommation (MW)','hour',
              'dayofweek','quarter','month','year','dayofyear','dayofmonth',
              'weekofyear',	'lag1'	,'lag2'	,'lag3'	,'isFuture'])
 # %%

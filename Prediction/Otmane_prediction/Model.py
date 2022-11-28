@@ -21,15 +21,16 @@ ts = DataCollection.data() # data from 2019-01-01 00:00:00 to 2022-11-14 23:45:0
 #splitting time series to train and test subsets
 y_test = ts.iloc[-35880:,:].copy()
 #Unobserved Components model definition
-model_UC1 = sm.tsa.UnobservedComponents(ts,
+model_UC1 = sm.tsa.UnobservedComponents(ts.loc[:"2022-11-18 23:45:00"],
                                         level='dtrend',
                                         irregular=True,
                                         stochastic_level = False,
                                         stochastic_trend = False,
                                         stochastic_freq_seasonal = [False, False, False],
-                                        freq_seasonal=[{'period': 672, 'harmonics': 1},
+                                        freq_seasonal=[{'period': 69, 'harmonics': 1},
                                                        {'period': 2880, 'harmonics': 1},
-                                                       {'period': 35066, 'harmonics': 2}])
+                                                       {'period': 35066, 'harmonics': 2}],
+                                        cycle=True)
 #fitting model to train data
 model_UC1res = model_UC1.fit()
 
