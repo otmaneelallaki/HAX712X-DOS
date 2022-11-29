@@ -2,9 +2,6 @@
 import DataCollection  
 #mathematical operations
 import numpy as np
-
-#data handling
-
 #plotting
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -26,18 +23,11 @@ ts = DataCollection.data() # data from 2019-01-01 00:00:00 to 2022-11-14 23:45:0
 f, ax = plt.subplots(figsize=(18,6),dpi=200);
 plt.suptitle('France Electric Power Energy consumption (MW)', fontsize=24);
 ts.plot(ax=ax,rot=90,ylabel='MW');
-# %%___________________________________________________________________
-#visual check of data at different scale
-f, ax = plt.subplots(figsize=(18,6),dpi=200);
-plt.suptitle('American Electric Power estimated energy consumption in MegaWatts (MW)', fontsize=36);
-ts.iloc[34560:3*34560,:].plot(ax=ax,rot=90,fontsize=12); #Ploting two years 
 #%%______________________________________________________________
 #drawing a random sample of 5 indices without repetition
 sample = sorted([x for x in np.random.choice(range(len(ts)), 5, replace=False)])
-
 #zoom x scales for plotting
 periods = [34360,2880,672]
-
 #plotting random time intervals at different scales to observe any seasonality present
 f, axes = plt.subplots(len(sample),3,dpi=400,figsize=(12,12));
 plt.suptitle('{} random time window plotted at {} different scales'.format(len(sample),len(periods)), fontsize=24, x=0.5, y=0.95)
