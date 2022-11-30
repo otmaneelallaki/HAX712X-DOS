@@ -3,22 +3,17 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to French electricity consumption's documentation!
-==========================================================
+French electricity consumption
+==============================
+this Project is for ... 
+
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   Prediction
+   Prediction/Prediction
 
-   Visualisation
+   Visualisation/Visualisation
 
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
