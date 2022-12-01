@@ -16,20 +16,14 @@ conso = conso.drop_duplicates()
 commune.dtypes
 conso['COM'] = conso['COM'].astype(object)
 conso.dtypes
-# %%
-conso.head(9)
 
-# %%
-commune.head(9)
-
-# %%
-commune[ commune['COM'] == '76157' ]
-
-# %%
-conso['COM'] == 76157
 
 # %%
 conso_reg = pd.merge(conso_com2, commune2, on='COM')
+
+# %%   the code for the french region (REG) must match with the usual JSON files
+conso_reg['REG'] = conso_reg['REG'].astype(int)
+conso_reg['REG'] = conso_reg['REG'].astype(str)
 
 
 # %%
