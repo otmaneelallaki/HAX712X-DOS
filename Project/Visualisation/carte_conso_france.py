@@ -22,7 +22,7 @@ folium.Choropleth(
     name="choropleth",
     data=region_consumption,
     columns=["REG", "Conso"],
-    key_on="feature.id",
+    key_on="feature.properties.code",
     fill_color="YlOrRd",
     fill_opacity=0.7,
     line_opacity=0.2,
