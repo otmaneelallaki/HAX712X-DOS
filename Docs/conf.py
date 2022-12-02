@@ -13,12 +13,10 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
-
-
-
+from Project import * 
 # -- Project information -----------------------------------------------------
 
-project = 'French electricity consumption'
+project = 'HAX712X-DOS'
 copyright = '2022, DOS'
 author = 'DOS'
 
