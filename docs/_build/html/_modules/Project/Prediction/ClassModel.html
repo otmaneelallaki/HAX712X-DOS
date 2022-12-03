@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project.Prediction.ClassModel &mdash; HAX712X-DOS 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> HAX712X-DOS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Prediction/Prediction.html">Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Visualisation/Visualisation.html">Visualisation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">HAX712X-DOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">Project.Prediction.ClassModel</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for Project.Prediction.ClassModel</h1><div class="highlight"><pre>
+<span></span><span class="c1">#import DataCollection  </span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+<span class="kn">import</span> <span class="nn">xgboost</span> <span class="k">as</span> <span class="nn">xgb</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+
+<div class="viewcode-block" id="Featurs"><a class="viewcode-back" href="../../../Project.Prediction.html#Project.Prediction.ClassModel.Featurs">[docs]</a><span class="k">class</span> <span class="nc">Featurs</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;  Class featurs  &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">())</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+
+<div class="viewcode-block" id="Featurs.ImportData"><a class="viewcode-back" href="../../../Project.Prediction.html#Project.Prediction.ClassModel.Featurs.ImportData">[docs]</a>    <span class="k">def</span> <span class="nf">ImportData</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Importing our time serier from DataCollection Model &quot;&quot;&quot;</span>
+        <span class="c1">#self.data = DataCollection.data()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/mac/Desktop/HAX712X-DOS/Project/Prediction/Dataset.csv&#39;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span></div>
+
+<div class="viewcode-block" id="Featurs.createFeatures"><a class="viewcode-back" href="../../../Project.Prediction.html#Project.Prediction.ClassModel.Featurs.createFeatures">[docs]</a>    <span class="k">def</span> <span class="nf">createFeatures</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create time series features based on time series index.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;minute&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">minute</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;dayofweek&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">dayofweek</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span>      <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span>       <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;dayofyear&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">dayofyear</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;dayofmonth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">day</span>
+        
+        <span class="n">target_map</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Consommation (MW)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;lag1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="s1">&#39;364 days&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">target_map</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;lag2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="s1">&#39;30 days&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">target_map</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;lag3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="s1">&#39;7 days&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">target_map</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span></div>
+
+<div class="viewcode-block" id="Featurs.fitModel"><a class="viewcode-back" href="../../../Project.Prediction.html#Project.Prediction.ClassModel.Featurs.fitModel">[docs]</a>    <span class="k">def</span> <span class="nf">fitModel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">FEATURES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dayofyear&#39;</span><span class="p">,</span> <span class="s1">&#39;minute&#39;</span><span class="p">,</span> <span class="s1">&#39;dayofweek&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;lag1&#39;</span><span class="p">,</span><span class="s1">&#39;lag2&#39;</span><span class="p">,</span><span class="s1">&#39;lag3&#39;</span><span class="p">]</span>
+        <span class="n">TARGET</span> <span class="o">=</span> <span class="s1">&#39;Consommation (MW)&#39;</span>
+        
+        <span class="n">X_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">FEATURES</span><span class="p">]</span>
+        <span class="n">y_all</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">TARGET</span><span class="p">]</span>
+        
+        <span class="n">reg</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBRegressor</span><span class="p">(</span><span class="n">base_score</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                               <span class="n">booster</span><span class="o">=</span><span class="s1">&#39;gbtree&#39;</span><span class="p">,</span>    
+                               <span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+                               <span class="n">objective</span><span class="o">=</span><span class="s1">&#39;reg:linear&#39;</span><span class="p">,</span>
+                               <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                               <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+        <span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span>
+                <span class="n">eval_set</span><span class="o">=</span><span class="p">[(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">)],</span>
+                <span class="n">verbose</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">reg</span></div>
+
+
+<div class="viewcode-block" id="Featurs.DayPred"><a class="viewcode-back" href="../../../Project.Prediction.html#Project.Prediction.ClassModel.Featurs.DayPred">[docs]</a>    <span class="k">def</span> <span class="nf">DayPred</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">year</span><span class="p">,</span><span class="n">month</span><span class="p">,</span><span class="n">day</span><span class="p">,</span> <span class="n">reg</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Predict confidence scores for samples.</span>
+<span class="sd">        The confidence score for a sample is proportional to the signed</span>
+<span class="sd">        distance of that sample to the hyperplane.</span>
+
+<span class="sd">        :param Year: The Year for which day we want to predict.</span>
+<span class="sd">        :type Year: int</span>
+
+<span class="sd">        :param month: The month for which day we want to predict.</span>
+<span class="sd">        :type month: int</span>
+
+<span class="sd">        :param day: The day for which day we want to predict.</span>
+<span class="sd">        :type day: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">liste</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">96</span><span class="p">):</span>
+            <span class="n">liste</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="mi">15</span><span class="p">)))</span>
+        <span class="n">DayDate</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">liste</span><span class="p">))</span>
+
+        <span class="n">dayFeaturs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+        <span class="n">dayFeaturs</span><span class="p">[</span><span class="s1">&#39;dayofyear&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">DayDate</span><span class="o">.</span><span class="n">dayofyear</span>
+        <span class="n">dayFeaturs</span><span class="p">[</span><span class="s1">&#39;minute&#39;</span><span class="p">]</span>    <span class="o">=</span> <span class="n">DayDate</span><span class="o">.</span><span class="n">minute</span>
+        <span class="n">dayFeaturs</span><span class="p">[</span><span class="s1">&#39;dayofweek&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">DayDate</span><span class="o">.</span><span class="n">dayofweek</span>
+        <span class="n">dayFeaturs</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="n">DayDate</span><span class="o">.</span><span class="n">month</span>
+        <span class="n">dayFeaturs</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span>      <span class="o">=</span> <span class="n">DayDate</span><span class="o">.</span><span class="n">year</span>
+        <span class="n">target_map</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Consommation (MW)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+        <span class="n">dayFeaturs</span><span class="p">[</span><span class="s1">&#39;lag1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">DayDate</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="s1">&#39;364 days&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">target_map</span><span class="p">)</span>
+        <span class="n">dayFeaturs</span><span class="p">[</span><span class="s1">&#39;lag2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">DayDate</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="s1">&#39;30 days&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">target_map</span><span class="p">)</span>
+        <span class="n">dayFeaturs</span><span class="p">[</span><span class="s1">&#39;lag3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">DayDate</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="s1">&#39;7 days&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">target_map</span><span class="p">)</span>
+        
+        
+        <span class="n">day_pred</span>    <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">dayFeaturs</span><span class="p">)</span>
+        <span class="n">day_pred</span>    <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">day_pred</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">DayDate</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;predicted day&#39;</span><span class="p">])</span>
+        
+        <span class="k">return</span>  <span class="n">day_pred</span></div>
+
+<div class="viewcode-block" id="Featurs.plot"><a class="viewcode-back" href="../../../Project.Prediction.html#Project.Prediction.ClassModel.Featurs.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">day_pred</span> <span class="p">):</span>
+        <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">);</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;France Electric Power Energy (MW) consumption&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">);</span>
+        <span class="n">day_pred</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">rot</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span><span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;MW&#39;</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span> <span class="s2">&quot;Predicted day &quot;</span><span class="p">);</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div></div>
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, DOS.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
