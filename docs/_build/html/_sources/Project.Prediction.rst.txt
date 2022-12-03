@@ -1,6 +1,9 @@
 Project.Prediction package
 ==========================
 
+Submodules
+----------
+
 Project.Prediction.ClassModel module
 ------------------------------------
 
@@ -8,7 +11,25 @@ Project.Prediction.ClassModel module
    :members:
    :undoc-members:
    :show-inheritance:
+   :member-order: bysource
 
+Project.Prediction.DataCollection module
+----------------------------------------
+
+.. automodule:: Project.Prediction.DataCollection
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource
+
+Project.Prediction.Visualisation module
+---------------------------------------
+
+.. automodule:: Project.Prediction.Visualisation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :member-order: bysource
 
 Module contents
 ---------------
@@ -17,5 +38,4 @@ Module contents
    :members:
    :undoc-members:
    :show-inheritance:
-
-
+   :member-order: bysource

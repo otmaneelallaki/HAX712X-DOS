@@ -8,10 +8,13 @@ import seaborn as sns
 sns.set()
 import statsmodels.api as sm
 
-class Featurs():
+class Dos():
     """  Class featurs  """
     def __init__(self, data) -> None:
         self.data = data
+        """"
+        In this part we are going   :ref:`Data Collection <DataCol>`:
+        """
 
     def createFeatures(self):
         """
@@ -103,6 +106,5 @@ class Featurs():
         plt.suptitle('Forcasting', fontsize=24);
         day_pred.plot(ax=ax,rot=90,ylabel='MW',legend= "Predicted day ");
         plt.show()
-
 
 

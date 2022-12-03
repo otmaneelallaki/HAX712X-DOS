@@ -6,14 +6,31 @@ import pooch  # download data / avoid re-downloading
 import os
 
 class Data():
+    """ 
+    This class is for downloading  the data 
+    from `2012 into 2022 <https://bit.ly/3UyWiN4>`_  and fil out all the missing values 
+    """
     def __init__(self, data = pd.DataFrame()) -> None:
+        """ 
+        initalisation by empty data dataFrame 
+        """
         self.data = data
 
     def impo(self):
-        self.data = pd.read_csv("./DataSet.csv")
+        """ 
+        This Method is for importing data from the package: this data is alrady clean and filtered by using the **dataDownload** method 
+        
+        :return: to a data trining that will be imported after to train our Model forcast.
+
+        :rtype: DataFrame
+        """
+        self.data = pd.read_csv("./Dataset/DataTrining.csv")
         return
 
-    def importData(self):
+    def dataDownload(self):
+        """
+        This method is for download the data from 2019 to 2022 year by year.
+         """
         #loading raw data 2019
         url2019 = "https://bit.ly/3hVlwrl"
         path_target = "./eco2mix-national-cons-def2019.csv"
@@ -113,7 +130,14 @@ class Data():
         return self.data
 
     def Filnan(self):
-        # _________________________________________________________-
+        """ we call this method directly after calling **dataDownload**
+        
+        .. note::
+            This is note text. 
+
+        .. warning::
+            This is warning text.
+            """
         for nan in range(np.shape(self.data)[0]-1):    # fil nan  2010
             if self.data[["Consommation (MW)"]].isna().iloc[:,0][nan] :
                 self.data.loc[:,"Gaz (MW)"][nan] = (self.data.loc[:,"Gaz (MW)"][nan-1] +self.data.loc[:,"Gaz (MW)"][nan+1])/2 # replace nan by the mean between 2 samples 
@@ -124,7 +148,7 @@ class Data():
 # %%
 #data = Data()
 # %%
-#ts = data.importData()
+##ts = data.dataDownload()
 #ts = data.Filnan()
 # %%
 

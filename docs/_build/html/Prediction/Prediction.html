@@ -72,16 +72,35 @@
              
   <section id="prediction">
 <h1>Prediction<a class="headerlink" href="#prediction" title="Permalink to this headline"></a></h1>
+<p>In this part we are going   <a class="reference internal" href="DataCollection.html#datacol"><span class="std std-ref">some disadvantages</span></a>:</p>
 <section id="module-Project.Prediction.ClassModel">
 <span id="class-prediction"></span><h2>Class Prediction<a class="headerlink" href="#module-Project.Prediction.ClassModel" title="Permalink to this headline"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Featurs">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">Project.Prediction.ClassModel.</span></span><span class="sig-name descname"><span class="pre">Featurs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">data=Empty</span> <span class="pre">DataFrame</span> <span class="pre">Columns:</span> <span class="pre">[]</span> <span class="pre">Index:</span> <span class="pre">[]</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Featurs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Featurs" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Dos">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">Project.Prediction.ClassModel.</span></span><span class="sig-name descname"><span class="pre">Dos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Dos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Dos" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class featurs</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Dos.data">
+<span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#Project.Prediction.ClassModel.Dos.data" title="Permalink to this definition"></a></dt>
+<dd><p>”
+In this part we are going   <a class="reference internal" href="DataCollection.html#datacol"><span class="std std-ref">Data Collection</span></a>:</p>
+</dd></dl>
+
 <dl class="py method">
-<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Featurs.DayPred">
-<span class="sig-name descname"><span class="pre">DayPred</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">month</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">day</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Featurs.DayPred"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Featurs.DayPred" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Dos.createFeatures">
+<span class="sig-name descname"><span class="pre">createFeatures</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Dos.createFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Dos.createFeatures" title="Permalink to this definition"></a></dt>
+<dd><p>Create time series features based on time series index.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Dos.fitModel">
+<span class="sig-name descname"><span class="pre">fitModel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Dos.fitModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Dos.fitModel" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Dos.DayPred">
+<span class="sig-name descname"><span class="pre">DayPred</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">month</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">day</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Dos.DayPred"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Dos.DayPred" title="Permalink to this definition"></a></dt>
 <dd><p>Predict confidence scores for samples.
 The confidence score for a sample is proportional to the signed
 distance of that sample to the hyperplane.</p>
@@ -97,25 +116,8 @@ distance of that sample to the hyperplane.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Featurs.ImportData">
-<span class="sig-name descname"><span class="pre">ImportData</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Featurs.ImportData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Featurs.ImportData" title="Permalink to this definition"></a></dt>
-<dd><p>Importing our time serier from DataCollection Model</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Featurs.createFeatures">
-<span class="sig-name descname"><span class="pre">createFeatures</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Featurs.createFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Featurs.createFeatures" title="Permalink to this definition"></a></dt>
-<dd><p>Create time series features based on time series index.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Featurs.fitModel">
-<span class="sig-name descname"><span class="pre">fitModel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Featurs.fitModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Featurs.fitModel" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Featurs.plot">
-<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">day_pred</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Featurs.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Featurs.plot" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Dos.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">day_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DayDate</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Dos.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Dos.plot" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
