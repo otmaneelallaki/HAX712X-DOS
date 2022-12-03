@@ -10,16 +10,8 @@ import statsmodels.api as sm
 
 class Featurs():
     """  Class featurs  """
-    def __init__(self, data= pd.DataFrame()) -> None:
+    def __init__(self, data) -> None:
         self.data = data
-
-    def ImportData(self):
-        """ Importing our time serier from DataCollection Model """
-        #self.data = DataCollection.data()
-        self.data = pd.read_csv('/Users/mac/Desktop/HAX712X-DOS/Project/Prediction/Dataset.csv', sep = ",")
-        self.data= self.data.set_index('Time')
-        self.data.index = pd.to_datetime(self.data.index)
-        return self.data
 
     def createFeatures(self):
         """
@@ -33,7 +25,7 @@ class Featurs():
         self.data['dayofyear']  = self.data.index.dayofyear
         self.data['dayofmonth'] = self.data.index.day
         
-        target_map = self.data['Consommation (MW)'].to_dict()
+        target_map = self.data['target'].to_dict()
         self.data['lag1'] = (self.data.index - pd.Timedelta('364 days')).map(target_map)
         self.data['lag2'] = (self.data.index - pd.Timedelta('30 days')).map(target_map)
         self.data['lag3'] = (self.data.index - pd.Timedelta('7 days')).map(target_map)
@@ -42,7 +34,7 @@ class Featurs():
     def fitModel(self):
         FEATURES = ['dayofyear', 'minute', 'dayofweek', 'month', 'year',
                     'lag1','lag2','lag3']
-        TARGET = 'Consommation (MW)'
+        TARGET = 'target'
         
         X_all = self.data[FEATURES]
         y_all = self.data[TARGET]
@@ -86,20 +78,29 @@ class Featurs():
         dayFeaturs['dayofweek'] = DayDate.dayofweek
         dayFeaturs['month']     = DayDate.month
         dayFeaturs['year']      = DayDate.year
-        target_map  = self.data['Consommation (MW)'].to_dict()
+        target_map         = self.data['target'].to_dict()
         dayFeaturs['lag1'] = (DayDate - pd.Timedelta('364 days')).map(target_map)
         dayFeaturs['lag2'] = (DayDate - pd.Timedelta('30 days')).map(target_map)
         dayFeaturs['lag3'] = (DayDate - pd.Timedelta('7 days')).map(target_map)
         
-        
-        day_pred    = reg.predict(dayFeaturs)
-        day_pred    = pd.DataFrame(day_pred, index=DayDate, columns= ['predicted day'])
-        
-        return  day_pred
+        pred    = reg.predict(dayFeaturs)
+        #day_pred    = pd.DataFrame(day_pred, index=DayDate, columns= ['predicted day'])
+        Date       = DayDate.strftime('%Y-%m-%d')
+        Hour       = DayDate.strftime('%H:%M')
 
-    def plot(self,day_pred ):
+        day_pred                        = pd.DataFrame()
+        day_pred["Date"]                = Date
+        day_pred["Heure"]               = Hour
+        day_pred["Consommation (MW)"]   = pred
+
+        return  day_pred, DayDate
+
+    def plot(self,day_pred, DayDate ):
+        
+        day_pred = day_pred["Consommation (MW)"].values
+        day_pred    = pd.DataFrame(day_pred, index=DayDate, columns= ['predicted day'])
         f, ax = plt.subplots(figsize=(12,6),dpi=200);
-        plt.suptitle('France Electric Power Energy (MW) consumption', fontsize=24);
+        plt.suptitle('Forcasting', fontsize=24);
         day_pred.plot(ax=ax,rot=90,ylabel='MW',legend= "Predicted day ");
         plt.show()
 
