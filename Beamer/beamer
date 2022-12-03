@@ -1,0 +1,289 @@
+\documentclass[10pt,fleqn,xcolor=svgnames]{beamer}
+\mode<presentation>{
+  \usetheme{Boadilla}
+  \setbeamercovered{dynamic}
+}
+%--------------------------------------------------------
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+
+\usepackage{amssymb}
+\usepackage{smartdiagram}
+\usetheme{Warsaw}
+\usepackage{tikz}
+\usecolortheme{}
+\usetikzlibrary{arrows}
+
+\usepackage{graphicx, epstopdf}
+\usepackage[framed, numbered]{matlab-prettifier}
+
+\usepackage{amsfonts}
+\usepackage{concrete}
+
+\usepackage{graphicx}
+\usepackage{multimedia}
+\usepackage{fancyhdr}
+
+
+\definecolor{royalazure}{rgb}{0.0, 0.22, 0.66}
+\usecolortheme[named=royalazure]{structure}
+%-------------------------------------------------------
+
+%-------------------------------------------------------
+\title[HAX712X Project ]{\Huge{\textbf{HAX712X Project}}}
+\author[ DOS ]{\large\textbf{EL ALLAKI Otmane\\
+AOUES Sofiane\\CZARNECKI David}}
+\date[Decembre 2022]{\small{Faculty of Sciences  Montpellier}\\{University of Montpellier
+\vskip 0.2 cm
+\textbf{Decembre 2022}}}
+
+
+\setbeamercovered{transparent} 
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{footline}[frame number]
+
+
+%\fontsize{3}{7}
+%\setbeamerfont{headline}{size=\selectfont}
+
+%--------------------------------------------------------------
+\begin{document}
+{
+\setbeamertemplate{background}
+{\includegraphics[width=\paperwidth,height=\paperheight]{images/desert.jpeg}}
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+}
+%----------------------------------------------------------
+\begin{frame}[plain]
+\frametitle{Plan} \tableofcontents%[pausesections]
+\end{frame}
+%---------------------------------------------------------
+% to delimit a block (we only want to remove the header for this frame)
+\makeatletter % to change template
+    \setbeamertemplate{headline}[default] % not mandatory, but I though it was better to set it blank
+    \def\beamer@entrycode{\vspace*{-\headheight}} % here is the part we are interested in :)
+\makeatother
+%---------------------------------------------------------------
+\section{Introduction}
+\frame[plain]{\tableofcontents[current]}
+
+\setbeamercolor{block title example}{fg=white,bg=white!25!blue!}
+\begin{frame}
+\begin{exampleblock}{\centering Introduction}
+\vskip 0.3cm
+
+\begin{itemize}
+   \item Prediction and Visualisation Data from Enedis (French company in charge of the public electricity network)
+   \item Distribution of tasks
+\end{itemize}
+
+\vspace*{0.3cm}\end{exampleblock}
+
+\end{frame}
+
+%--------------------------------------------------------
+\section{Prediction}
+\frame[plain]{\tableofcontents[current]}
+
+\begin{frame}
+\frametitle{Prediction: Step 1}
+\tikzset{
+  every shadow/.style={
+    fill=blue}
+}
+\smartdiagramset{set color list={
+   white!70!teal,
+   },
+ sequence item border color=gray!30!black,
+}
+\begin{center}
+\smartdiagramset{description title width=3cm, 
+description title text width=1.75cm,
+descriptive items y sep=2,
+description text width=8cm,
+module minimum height=1.25cm,
+border color=blue}
+\smartdiagram[descriptive diagram]{%
+ {{\textbf{ Data Collection}}, 
+\begin{itemize}
+\item DataSet Importation : from January 2019 to December 2022.
+\item Replace missing Data "\texttt{nan}".
+\end{itemize}
+}}
+\end{center}
+\end{frame}
+%---------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Prediction: Step 2}
+\tikzset{
+  every shadow/.style={
+    fill=blue}
+}
+\smartdiagramset{set color list={
+   white!70!teal,
+   },
+ sequence item border color=gray!30!black,
+}
+\begin{center}
+\smartdiagramset{description title width=3cm, 
+description title text width=1.75cm,
+descriptive items y sep=2,
+description text width=8cm,
+module minimum height=1.25cm,
+border color=blue}
+\smartdiagram[descriptive diagram]{%
+ {{\textbf{ Data Behaviours }}, 
+\begin{itemize}
+\item plot the Data from different scales .
+\item Checking the Seasonality.
+\end{itemize}
+}}
+\end{center}
+\end{frame}
+
+%--------------------------------------------------------------
+{ % to delimit a block (we only want to remove the header for this frame)
+\makeatletter % to change template
+    \setbeamertemplate{headline}[default] % not mandatory, but I though it was better to set it blank
+    \def\beamer@entrycode{\vspace*{-\headheight}} % here is the part we are interested in :)
+\makeatother
+\begin{frame}
+\frametitle{different scales}
+\tikzset{
+  every shadow/.style={
+    fill=blue}
+}
+\smartdiagramset{set color list={
+   white!70!teal,
+   },
+ sequence item border color=gray!30!black,
+}
+\begin{minipage}{0.2\linewidth}
+%\hspace*{0.1cm}
+\includegraphics[width=120mm,height=80mm]{imagens/image2.pdf}
+\end{minipage}\hfil
+\hspace{0.4cm}
+
+\end{frame}
+}
+%--------------------------------------------------------------
+{ % to delimit a block (we only want to remove the header for this frame)
+\makeatletter % to change template
+    \setbeamertemplate{headline}[default] % not mandatory, but I though it was better to set it blank
+    \def\beamer@entrycode{\vspace*{-\headheight}} % here is the part we are interested in :)
+\makeatother
+\begin{frame}
+\frametitle{Checking the Seasonality}
+\tikzset{
+  every shadow/.style={
+    fill=blue}
+}
+\smartdiagramset{set color list={
+   white!70!teal,
+   },
+ sequence item border color=gray!30!black,
+}
+\begin{minipage}{0.2\linewidth}
+%\hspace*{0.1cm}
+\includegraphics[width=110mm,height=250]{imagens/image3.pdf}
+\end{minipage}\hfil
+\hspace{0.4cm}
+
+\end{frame}
+}
+%------------------------------------------------------
+\begin{frame}
+\frametitle{Prediction: Step 3}
+\tikzset{
+  every shadow/.style={
+    fill=blue}
+}
+\smartdiagramset{set color list={
+   white!70!teal,
+   },
+ sequence item border color=gray!30!black,
+}
+\begin{center}
+\smartdiagramset{description title width=3cm, 
+description title text width=1.75cm,
+descriptive items y sep=2,
+description text width=8cm,
+module minimum height=1.25cm,
+border color=blue}
+\smartdiagram[descriptive diagram]{%
+ {{\textbf{ Fiting model}}, 
+\begin{itemize}
+\item Splitting Data .
+\item Fitting Model .
+\item Prediction per day.
+\end{itemize}
+}}
+\end{center}
+\end{frame}
+
+%--------------------------------------------------------------
+{ % to delimit a block (we only want to remove the header for this frame)
+\makeatletter % to change template
+    \setbeamertemplate{headline}[default] % not mandatory, but I though it was better to set it blank
+    \def\beamer@entrycode{\vspace*{-\headheight}} % here is the part we are interested in :)
+\makeatother
+\begin{frame}
+\frametitle{Predicted day vs Real day Consumption }
+\tikzset{
+  every shadow/.style={
+    fill=blue}
+}
+\smartdiagramset{set color list={
+   white!70!teal,
+   },
+ sequence item border color=gray!30!black,
+}
+\begin{minipage}{0.2\linewidth}
+%\hspace*{0.1cm}
+\includegraphics[width=110mm,height=200]{imagens/image4.pdf}
+\end{minipage}\hfil
+\hspace{0.4cm}
+
+\end{frame}
+}
+
+%--------------------------------------------------------
+
+\section{Interactive card}
+\frame[plain]{\tableofcontents[current]}
+
+\begin{frame}
+\vspace{-2cm}
+\includegraphics[scale=0.4]{imagens/carte_conso.png}
+
+Two maps :
+
+\begin{itemize}
+    \item pygal map (Florian Mounier)
+    really shiny but limited
+    \item folium map (specific for choropleth)
+    ~Yan Holtz
+\end{itemize}
+
+
+
+\end{frame}
+%---------------------------------------------------------------------------------
+
+
+%\section{Conclusion }
+
+
+%\begin{frame}
+%\textbf{\textcolor{blue}{Conclusion:}}
+%\vskip 0.6cm
+%set an conclu .
+%\end{frame}
+
+
+\end{document}

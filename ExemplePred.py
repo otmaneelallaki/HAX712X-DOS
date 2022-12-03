@@ -13,3 +13,4 @@ reg = Object.fitModel()
 dayPred = Object.DayPred(2022,11,10,reg)
 # %%
 Object.plot(dayPred)
+# %%
