@@ -24,8 +24,8 @@ class Data():
 
         :rtype: DataFrame
         """
-        self.data = pd.read_csv("./Dataset/DataTrining.csv")
-        return
+        self.data = pd.read_csv("./Prediction/Dataset/DataTrining.csv")
+        return self.data
 
     def dataDownload(self):
         """
