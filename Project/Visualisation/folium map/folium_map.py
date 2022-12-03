@@ -29,8 +29,6 @@ folium.Choropleth(
     legend_name  = "Consumption (MWh)",
 ).add_to(m)
 
-folium.LayerControl().add_to(m)
-
 m
 
 # %% to open in firefox, the following command will save the map
