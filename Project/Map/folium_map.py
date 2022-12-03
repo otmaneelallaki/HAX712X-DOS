@@ -6,7 +6,7 @@ import pandas as pd
 import geopandas as gpd
 import folium
 
-url_shape = 'https://france-geojson.gregoiredavid.fr/repo/departements.geojson'
+url_shape = 'https://www.data.gouv.fr/fr/datasets/r/92f37c92-3aae-452c-8af1-c77e6dd590e5'
 region_shape = gpd.read_file(url_shape)
 
 region_consumption = pd.read_csv('conso_dep.csv')
@@ -22,7 +22,7 @@ folium.Choropleth(
     name         = "map",
     data         = region_consumption,
     columns      = ["DEP", "Conso"],
-    key_on       = "feature.properties.code",
+    key_on       = "feature.properties.dep",
     fill_color   = "YlOrRd",
     fill_opacity = 0.7,
     line_opacity = 0.2,
