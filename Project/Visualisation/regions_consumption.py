@@ -1,42 +1,43 @@
-# %%
 import pandas as pd
 import numpy as np
-
-# %% with just keep the city and his land
-df = pd.read_csv('commune_2022.csv', sep=',')
-commune = df[['COM', 'REG']]
-
-# %% conso, rename and delete the duplicates
-df2 = pd.read_csv('consommation-annuelle-residentielle-par-adresse.csv', sep=';')
-df2.rename(columns = {'Code INSEE de la commune':'COM'}, inplace = True)
-df2.rename(columns = {'Consommation annuelle moyenne de la commune (MWh)':'Conso'}, inplace = True)
-conso = df2[['COM', 'Conso']]
-conso = conso.drop_duplicates()
-
-# %% compatibility between the two databases
-conso[['COM']] = conso[['COM']].astype(str)
-
-# %%
-conso_reg = pd.merge(conso, commune, on='COM')
-
-# %%
-conso_reg = conso_reg[['Conso' , 'REG' ]]
-conso_reg = conso_reg.dropna()
-conso_reg.round({'Conso': 2})
+import os
+import pooch
 
 
-# %%
-for i in conso_reg['REG']:
-    conso_reg.loc[conso_reg.REG==i,'Conso']=conso_reg[conso_reg['REG']==i]['Conso'].mean()
-
-# %%
-conso_reg = conso_reg.drop_duplicates()
-
-# %%   the code for the french region (REG) must match with the usual JSON files
-conso_reg['REG'] = conso_reg['REG'].astype(int)
-conso_reg['REG'] = conso_reg['REG'].astype(str)
+url_cons = 'https://data.enedis.fr/explore/dataset/consommation-annuelle-residentielle-par-adresse/download/?format=csv&timezone=Europe/Berlin&lang=fr&use_labels_for_header=true&csv_separator=%3B'
+path_target = './consommation-annuelle-residentielle-par-adresse.csv'
+path, fname = os.path.split(path_target)
+pooch.retrieve(url_cons, path = path, fname = fname, known_hash = None)
+selected = ['Code INSEE de la commune', 'Consommation annuelle moyenne de la commune (MWh)']
+df_cons = pd.read_csv('consommation-annuelle-residentielle-par-adresse.csv', usecols = selected, sep = ";", float_precision = 'legacy')
+df_cons = df_cons.drop_duplicates().reset_index(drop = True)
+df_cons.rename(columns = {'Code INSEE de la commune':'COM', 'Consommation annuelle moyenne de la commune (MWh)':'Conso'}, inplace = True)
 
 
-# %%
-conso_reg.to_csv('conso_reg.csv', index=False)
+url_com = 'https://www.insee.fr/fr/statistiques/fichier/5057840/commune2021-csv.zip'
+path_target2 = './commune2021-csv.zip'
+path2, fname2 = os.path.split(path_target2)
+pooch.retrieve(url_com, path = path2, fname = fname2, known_hash = None)
+COL = 'DEP'
+selected2 = ['COM', COL]
+df_2 = pd.read_csv('./commune2021-csv.zip', compression='zip', usecols = selected2, sep = ",")
+
+
+df_cons[['COM']] = df_cons[['COM']].astype(str)
+
+conso_col = pd.merge(df_cons, df_2, on='COM')
+conso_col = conso_col[['Conso', COL]]
+conso_col = conso_col.dropna()
+conso_col.round({'Conso': 2})
+
+for i in conso_reg[COL]:
+    conso_col.loc[conso_col[COL] == i,'Conso'] = conso_col[ conso_col[COL] == i]['Conso'].mean()
+    conso_col = conso_col.drop_duplicates()
+
+conso_col[COL] = conso_col[COL].astype(int)
+conso_col[COL] = conso_col[COL].astype(str)
+
+
+
+conso_col.to_csv('conso_dep.csv', index=False)
 
