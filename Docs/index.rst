@@ -6,6 +6,14 @@
 French electricity consumption
 ==============================
 
+.. figure:: ts.gif
+   :height: 350
+   :width: 700
+   :scale: 95
+   :align: center
+   :class: with-shadow
+   :alt: Chart
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
@@ -13,9 +21,6 @@ French electricity consumption
    Prediction/Prediction
 
    Visualisation/Visualisation
-
-
-
 
 Indices and tables
 ==================

@@ -1,3 +1,4 @@
+#%%
 import pandas as pd
 import datetime
 import numpy as np
@@ -133,3 +134,8 @@ def data():
     frames = [data2019, data2020, data2021, dataHalf2022, data2022]
     ts = pd.concat(frames) 
     return ts
+# %%
+#data = data()
+# %%
+#data.to_csv("./DataSet.csv")
+# %%

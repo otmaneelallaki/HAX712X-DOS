@@ -1,9 +1,12 @@
-#%%
-import DataCollection  
+#import DataCollection  
 import pandas as pd
 import numpy as np
 import datetime as dt
 import xgboost as xgb
+import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set()
+import statsmodels.api as sm
 
 class Featurs():
     """  Class featurs  """
@@ -12,13 +15,13 @@ class Featurs():
 
     def ImportData(self):
         """ Importing our time serier from DataCollection Model """
-        self.data = DataCollection.data()
-        #self.data = pd.read_csv('/Users/mac/Desktop/HAX712X-DOS/Project/Prediction/Prediction_Sofiane/eco2mix-national-cons-def_2019-2022.csv', sep = ",")
-        #self.data= self.data.set_index('Time')
-        #self.data.index = pd.to_datetime(self.data.index)
+        #self.data = DataCollection.data()
+        self.data = pd.read_csv('/Users/mac/Desktop/HAX712X-DOS/Project/Prediction/Dataset.csv', sep = ",")
+        self.data= self.data.set_index('Time')
+        self.data.index = pd.to_datetime(self.data.index)
         return self.data
 
-    def create_features(self):
+    def createFeatures(self):
         """
         Create time series features based on time series index.
         """
@@ -35,14 +38,6 @@ class Featurs():
         self.data['lag2'] = (self.data.index - pd.Timedelta('30 days')).map(target_map)
         self.data['lag3'] = (self.data.index - pd.Timedelta('7 days')).map(target_map)
         return self.data
-
-
-class FitModel():
-    """
-    Fiting our Model : Gradient boosting-based
-    """
-    def __init__(self, data) -> None:
-        self.data = data
 
     def fitModel(self):
         FEATURES = ['dayofyear', 'minute', 'dayofweek', 'month', 'year',
@@ -65,18 +60,20 @@ class FitModel():
         return reg
 
 
-class DayPredict():
-    """
-    Day Prediction 
-    """
-    def __init__(self, data) -> None:
-        self.data = data
-
-    def DayFeaturs(self,year,month,day, reg):
+    def DayPred(self,year,month,day, reg):
         """
-        Extract the features of the model from the date format
+        Predict confidence scores for samples.
+        The confidence score for a sample is proportional to the signed
+        distance of that sample to the hyperplane.
 
-        Return to a DataFrame 
+        :param Year: The Year for which day we want to predict.
+        :type Year: int
+
+        :param month: The month for which day we want to predict.
+        :type month: int
+
+        :param day: The day for which day we want to predict.
+        :type day: int
         """
         liste = []
         for i in range (96):
@@ -99,3 +96,12 @@ class DayPredict():
         day_pred    = pd.DataFrame(day_pred, index=DayDate, columns= ['predicted day'])
         
         return  day_pred
+
+    def plot(self,day_pred ):
+        f, ax = plt.subplots(figsize=(12,6),dpi=200);
+        plt.suptitle('France Electric Power Energy (MW) consumption', fontsize=24);
+        day_pred.plot(ax=ax,rot=90,ylabel='MW',legend= "Predicted day ");
+        plt.show()
+
+
+
