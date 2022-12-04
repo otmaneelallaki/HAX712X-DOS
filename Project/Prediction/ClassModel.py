@@ -28,6 +28,7 @@ class Dos():
         self.data['year']       = self.data.index.year
         self.data['dayofyear']  = self.data.index.dayofyear
         self.data['dayofmonth'] = self.data.index.day
+        
         target = self.data.columns[self.energie]
         target_map = self.data[target].to_dict()
         self.data['lag1'] = (self.data.index - pd.Timedelta('364 days')).map(target_map)
@@ -76,20 +77,21 @@ class Dos():
         for i in range (96):
             liste.append(str(dt.datetime(year, month, day, 0, 0) + dt.timedelta(minutes=(i)*15)))
         DayDate = pd.to_datetime(np.array(liste))
-        target = self.data.columns[self.energie]
+
         dayFeaturs = pd.DataFrame()
         dayFeaturs['dayofyear'] = DayDate.dayofyear
         dayFeaturs['minute']    = DayDate.minute
         dayFeaturs['dayofweek'] = DayDate.dayofweek
         dayFeaturs['month']     = DayDate.month
         dayFeaturs['year']      = DayDate.year
+
+        target = self.data.columns[self.energie]
         target_map         = self.data[target].to_dict()
         dayFeaturs['lag1'] = (DayDate - pd.Timedelta('364 days')).map(target_map)
         dayFeaturs['lag2'] = (DayDate - pd.Timedelta('30 days')).map(target_map)
         dayFeaturs['lag3'] = (DayDate - pd.Timedelta('7 days')).map(target_map)
         
         pred    = reg.predict(dayFeaturs)
-        #day_pred    = pd.DataFrame(day_pred, index=DayDate, columns= ['predicted day'])
         Date       = DayDate.strftime('%Y-%m-%d')
         Hour       = DayDate.strftime('%H:%M')
         day_pred                        = pd.DataFrame()
@@ -103,9 +105,9 @@ class Dos():
         target = self.data.columns[self.energie]
         
         day_pred = day_pred[target].values
-        day_pred    = pd.DataFrame(day_pred, index=DayDate, columns= ['predicted day'])
+        day_pred    = pd.DataFrame(day_pred, index=DayDate, columns= ['{}'.format(target)])
         f, ax = plt.subplots(figsize=(12,6),dpi=200);
-        plt.suptitle('2022 Dec 8 Forcasting {}'.format(target), fontsize=24);
+        plt.suptitle('2022 Dec 8, Forcasting {}'.format(target), fontsize=24);
         day_pred.plot(ax=ax,rot=90,ylabel='MW',legend= "Predicted day ");
         plt.show()
 
