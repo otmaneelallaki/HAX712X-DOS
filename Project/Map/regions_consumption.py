@@ -30,13 +30,10 @@ conso_col = conso_col[['Conso', COL]]
 conso_col = conso_col.dropna()
 conso_col.round({'Conso': 2})
 
-for i in conso_reg[COL]:
-    conso_col.loc[conso_col[COL] == i,'Conso'] = conso_col[ conso_col[COL] == i]['Conso'].mean()
-    conso_col = conso_col.drop_duplicates()
+conso_col = conso_col.groupby([COL])['Conso'].mean().reset_index()
 
 conso_col[COL] = conso_col[COL].astype(int)
 conso_col[COL] = conso_col[COL].astype(str)
-
 
 
 conso_col.to_csv('conso_dep.csv', index=False)
