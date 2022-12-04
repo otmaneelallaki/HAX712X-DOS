@@ -6,4 +6,6 @@ xgboost==1.7.1
 
 pooch==1.6.0
 
+geopandas==0.12.1
 
+folium==0.13.0
