@@ -20,7 +20,7 @@ French electricity consumption
 
    Prediction/Prediction
 
-   Visualisation/Visualisation
+   Maps/Maps
 
 Indices and tables
 ==================
