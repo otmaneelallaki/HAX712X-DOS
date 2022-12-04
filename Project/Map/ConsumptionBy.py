@@ -24,10 +24,10 @@ class ConsumptionBy:
         the repository """
 
         if COL == 'DEP':
-            data = pd.read_csv('./Map/Dataset/departements_consumption.csv', sep = ';')
+            data = pd.read_csv('./Dataset/departements_consumption.csv', sep = ';')
 
         elif COL == 'REG':
-            data = pd.read_csv('./Map/Dataset/regions_consumption.csv', sep = ';')
+            data = pd.read_csv('./Dataset/regions_consumption.csv', sep = ';')
 
         else: raise Exception("please give any of the following values as arguments : 'DEP' or 'REG' ")
 
