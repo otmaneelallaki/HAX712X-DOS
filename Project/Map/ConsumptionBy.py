@@ -8,6 +8,7 @@ class ConsumptionBy:
     This class create a dataframe which provide
     the French electricity consumption from 2019 to 2021
     by department or regions.
+    
     It uses two data from the following websites:
     
     INSEE data:
@@ -20,14 +21,22 @@ class ConsumptionBy:
 
     def getDataFast(COL):
 
-        """ Please use this attribute to get the data quickly from
-        the repository """
+        """
+        Take the data that is already created and stored in the ./DataSet repository.
+        Please prefer this attribute to get the data.
+        
+        :param str collectivity: 'DEP' or 'REG'
+        
+        :returns: csv file with the consumption by collectivity
+        :rtype: pandas.Series
+        
+        """
 
         if COL == 'DEP':
-            data = pd.read_csv('./Dataset/departements_consumption.csv', sep = ';')
+            data = pd.read_csv('./DataSet/departements_consumption.csv', sep = ',')
 
         elif COL == 'REG':
-            data = pd.read_csv('./Dataset/regions_consumption.csv', sep = ';')
+            data = pd.read_csv('./DataSet/regions_consumption.csv', sep = ',')
 
         else: raise Exception("please give any of the following values as arguments : 'DEP' or 'REG' ")
 
@@ -36,9 +45,19 @@ class ConsumptionBy:
 
     def getDataSlow(COL):
 
-        """ Be Carreful! This attribute download the data from the
-        internet, the data will be up to date but it can take around
-        8 minutes """
+        """
+        Create the data using those from the website specified above.
+        
+        .. WARNING::
+            Be Careful! It takes around 8 minutes to create it,
+            but the data will be up to date.
+        
+        :param str collectivity: 'DEP' or 'REG'
+        
+        :returns: csv file with the consumption by collectivity
+        :rtype: pandas.Series
+            
+        """
 
         url_cons = 'https://data.enedis.fr/explore/dataset/consommation-annuelle-residentielle-par-adresse/download/?format=csv&timezone=Europe/Berlin&lang=fr&use_labels_for_header=true&csv_separator=%3B'
         selected = ['Code INSEE de la commune', 'Consommation annuelle moyenne de la commune (MWh)']
