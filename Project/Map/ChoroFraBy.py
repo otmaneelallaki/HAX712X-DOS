@@ -4,6 +4,8 @@ import geopandas as gpd
 import folium
 import webbrowser
 
+from ConsumptionBy import ConsumptionBy
+
 
 class ChoroFraBy:
 
@@ -11,28 +13,44 @@ class ChoroFraBy:
     Consumption from 2019 to 2021 """
     
     
-    def createMap(COL):
+    def createMap(COL, speed):
         
         """
-        Choose a France by region or by departments.
-        The argument must be 'REG' or 'DEP'
+        Choose a France by region or by departments:
+        The argument must be 'REG' or 'DEP'.
+
+        Also specify the speed of creation:
+        The argument must be 'fast' or 'slow'.
+
+        If 'slow', the map will depend on the Enedis site data:
 
         """
 
+    
+        if speed == 'fast':
+            getdata = ConsumptionBy.getDataFast
+            f_consumption = getdata(COL)
+
+        elif speed == 'slow':
+            getdata = ConsumptionBy.getDataSlow
+            f_consumption = getdata(COL)
+
+        else:
+            raise Exception("please give any of the following values as arguments : 'fast' or 'slow' ")
+
+
         if COL == 'DEP':
-            f_consumption = pd.read_csv('./DataSet/departements_consumption.csv')
             url_shape = 'https://www.data.gouv.fr/fr/datasets/r/92f37c92-3aae-452c-8af1-c77e6dd590e5'
             f_shape = gpd.read_file(url_shape)
             f_key = "feature.properties.dep"
 
         elif COL == 'REG':
-            f_consumption = pd.read_csv('./DataSet/regions_consumption.csv')
             url_shape = 'https://www.data.gouv.fr/fr/datasets/r/d993e112-848f-4446-b93b-0a9d5997c4a4'
             f_shape = gpd.read_file(url_shape)
             f_key = "feature.properties.reg"
 
         else : raise Exception("please give any of the following values as arguments : 'DEP' or 'REG' ")
-            
+
         f_consumption[COL] = f_consumption[COL].astype(str)
         
         url_tiles = 'http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'
@@ -63,5 +81,5 @@ class ChoroFraBy:
 
         """ Open the map in your browser """
 
-        map = ChoroFraBy.createMap(COL)
+        map = ChoroFraBy.createMap(COL, 'fast')
         webbrowser.open_new_tab('map')
