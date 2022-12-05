@@ -8,6 +8,7 @@ class ConsumptionBy:
     This class create a dataframe which provide
     the French electricity consumption from 2019 to 2021
     by department or regions.
+    
     It uses two data from the following websites:
     
     INSEE data:
@@ -20,8 +21,16 @@ class ConsumptionBy:
 
     def getDataFast(COL):
 
-        """ Please use this attribute to get the data quickly from
-        the repository """
+        """
+        Please use this attribute to get the data quickly from
+        the repository
+        
+        :param str collectivity: 'DEP' or 'REG'
+        
+        :returns: csv file with the consumption by collectivity
+        :rtype: pandas.Series
+        
+        """
 
         if COL == 'DEP':
             data = pd.read_csv('./DataSet/departements_consumption.csv', sep = ',')
