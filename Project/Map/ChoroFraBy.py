@@ -87,3 +87,4 @@ class ChoroFraBy:
 
         map = ChoroFraBy.createMap(COL, 'fast')
         webbrowser.open_new_tab('map')
+        
