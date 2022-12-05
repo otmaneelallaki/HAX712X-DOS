@@ -19,29 +19,21 @@ class ChoroFraBy:
 
         """
 
-        url_shape_dep = 'https://www.data.gouv.fr/fr/datasets/r/92f37c92-3aae-452c-8af1-c77e6dd590e5'
-        f_shape_dep = gpd.read_file(url_shape_dep)
-
-        url_shape_reg = 'https://www.data.gouv.fr/fr/datasets/r/d993e112-848f-4446-b93b-0a9d5997c4a4'
-        f_shape_reg = gpd.read_file(url_shape_reg)
-        
-        f_consumption_dep = pd.read_csv('./DataSet/departements_consumption.csv')
-        f_consumption_dep['DEP'] = f_consumption_dep['DEP'].astype(str)
-
-        f_consumption_reg = pd.read_csv('./DataSet/regions_consumption.csv')
-        f_consumption_reg['REG'] = f_consumption_reg['REG'].astype(str)
-
         if COL == 'DEP':
-            f_consumption = f_consumption_dep
-            f_shape = f_shape_dep
+            f_consumption = pd.read_csv('./DataSet/departements_consumption.csv')
+            url_shape = 'https://www.data.gouv.fr/fr/datasets/r/92f37c92-3aae-452c-8af1-c77e6dd590e5'
+            f_shape = gpd.read_file(url_shape)
             f_key = "feature.properties.dep"
 
         elif COL == 'REG':
-            f_consumption = f_consumption_reg
-            f_shape = f_shape_reg
+            f_consumption = pd.read_csv('./DataSet/regions_consumption.csv')
+            url_shape = 'https://www.data.gouv.fr/fr/datasets/r/d993e112-848f-4446-b93b-0a9d5997c4a4'
+            f_shape = gpd.read_file(url_shape)
             f_key = "feature.properties.reg"
 
         else : raise Exception("please give any of the following values as arguments : 'DEP' or 'REG' ")
+            
+        f_consumption[COL] = f_consumption[COL].astype(str)
         
         url_tiles = 'http://c.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'
         
