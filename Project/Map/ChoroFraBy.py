@@ -23,6 +23,7 @@ class ChoroFraBy:
         The argument must be 'fast' or 'slow'.
 
         If 'slow', the map will depend on the Enedis site data:
+        https://data.enedis.fr/explore/dataset/consommation-annuelle-residentielle-par-adresse/export/
 
         """
 
