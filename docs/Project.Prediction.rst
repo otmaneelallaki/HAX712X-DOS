@@ -11,7 +11,6 @@ Project.Prediction.ClassModel module
    :members:
    :undoc-members:
    :show-inheritance:
-   :member-order: bysource
 
 Project.Prediction.DataCollection module
 ----------------------------------------
@@ -20,7 +19,6 @@ Project.Prediction.DataCollection module
    :members:
    :undoc-members:
    :show-inheritance:
-   :member-order: bysource
 
 Project.Prediction.Visualisation module
 ---------------------------------------
@@ -29,7 +27,6 @@ Project.Prediction.Visualisation module
    :members:
    :undoc-members:
    :show-inheritance:
-   :member-order: bysource
 
 Module contents
 ---------------
@@ -38,4 +35,3 @@ Module contents
    :members:
    :undoc-members:
    :show-inheritance:
-   :member-order: bysource

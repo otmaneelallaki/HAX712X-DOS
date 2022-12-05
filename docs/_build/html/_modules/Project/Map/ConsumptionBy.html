@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project.Map.ConsumptionBy &mdash; HAX712X-DOS 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> HAX712X-DOS
+            <img src="../../../_static/logo.jpeg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Predection, Data Collection</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Prediction/Prediction.html">Project.Prediction Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Prediction/DataCollection.html">Project.Prediction.DataCollection module</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">interactive card</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Maps/Chro.html">Project.Map.ChoroFraBy module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Maps/ConsBy.html">Project.Map.ConsumptionBy module</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Example/Example.html">Examples</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">HAX712X-DOS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">Project.Map.ConsumptionBy</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for Project.Map.ConsumptionBy</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<div class="viewcode-block" id="ConsumptionBy"><a class="viewcode-back" href="../../../Project.Map.html#Project.Map.ConsumptionBy.ConsumptionBy">[docs]</a><span class="k">class</span> <span class="nc">ConsumptionBy</span><span class="p">:</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class create a dataframe which provide</span>
+<span class="sd">    the French electricity consumption from 2019 to 2021</span>
+<span class="sd">    by department or regions.</span>
+<span class="sd">    It uses two data from the following websites:</span>
+<span class="sd">    </span>
+<span class="sd">    INSEE data:</span>
+<span class="sd">    https://www.insee.fr/fr/information/5057840</span>
+
+<span class="sd">    ENEDIS data:</span>
+<span class="sd">    https://data.enedis.fr/explore/dataset/consommation-annuelle-residentielle-par-adresse/information/</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ConsumptionBy.getDataFast"><a class="viewcode-back" href="../../../Project.Map.html#Project.Map.ConsumptionBy.ConsumptionBy.getDataFast">[docs]</a>    <span class="k">def</span> <span class="nf">getDataFast</span><span class="p">(</span><span class="n">COL</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot; Please use this attribute to get the data quickly from</span>
+<span class="sd">        the repository &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">COL</span> <span class="o">==</span> <span class="s1">&#39;DEP&#39;</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./Dataset/departements_consumption.csv&#39;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">COL</span> <span class="o">==</span> <span class="s1">&#39;REG&#39;</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./Dataset/regions_consumption.csv&#39;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;please give any of the following values as arguments : &#39;DEP&#39; or &#39;REG&#39; &quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="ConsumptionBy.getDataSlow"><a class="viewcode-back" href="../../../Project.Map.html#Project.Map.ConsumptionBy.ConsumptionBy.getDataSlow">[docs]</a>    <span class="k">def</span> <span class="nf">getDataSlow</span><span class="p">(</span><span class="n">COL</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot; Be Carreful! This attribute download the data from the</span>
+<span class="sd">        internet, the data will be up to date but it can take around</span>
+<span class="sd">        8 minutes &quot;&quot;&quot;</span>
+
+        <span class="n">url_cons</span> <span class="o">=</span> <span class="s1">&#39;https://data.enedis.fr/explore/dataset/consommation-annuelle-residentielle-par-adresse/download/?format=csv&amp;timezone=Europe/Berlin&amp;lang=fr&amp;use_labels_for_header=true&amp;csv_separator=%3B&#39;</span>
+        <span class="n">selected</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Code INSEE de la commune&#39;</span><span class="p">,</span> <span class="s1">&#39;Consommation annuelle moyenne de la commune (MWh)&#39;</span><span class="p">]</span>
+        <span class="n">df_cons</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url_cons</span><span class="p">,</span> <span class="n">usecols</span> <span class="o">=</span> <span class="n">selected</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">float_precision</span> <span class="o">=</span> <span class="s1">&#39;legacy&#39;</span><span class="p">)</span>
+        <span class="n">df_cons</span> <span class="o">=</span> <span class="n">df_cons</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">df_cons</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Code INSEE de la commune&#39;</span><span class="p">:</span><span class="s1">&#39;COM&#39;</span><span class="p">,</span> <span class="s1">&#39;Consommation annuelle moyenne de la commune (MWh)&#39;</span><span class="p">:</span><span class="s1">&#39;Conso&#39;</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+        
+        <span class="n">url_com</span> <span class="o">=</span> <span class="s1">&#39;https://www.insee.fr/fr/statistiques/fichier/5057840/commune2021-csv.zip&#39;</span>
+
+        <span class="n">selected2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;COM&#39;</span><span class="p">,</span> <span class="n">COL</span><span class="p">]</span>
+        <span class="n">df_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url_com</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s1">&#39;zip&#39;</span><span class="p">,</span> <span class="n">usecols</span> <span class="o">=</span> <span class="n">selected2</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span>
+
+        <span class="n">df_cons</span><span class="p">[[</span><span class="s1">&#39;COM&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df_cons</span><span class="p">[[</span><span class="s1">&#39;COM&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+        <span class="n">conso_col</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_cons</span><span class="p">,</span> <span class="n">df_2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;COM&#39;</span><span class="p">)</span>
+        <span class="n">conso_col</span> <span class="o">=</span> <span class="n">conso_col</span><span class="p">[[</span><span class="s1">&#39;Conso&#39;</span><span class="p">,</span> <span class="n">COL</span><span class="p">]]</span>
+        <span class="n">conso_col</span> <span class="o">=</span> <span class="n">conso_col</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+        <span class="n">conso_col</span><span class="o">.</span><span class="n">round</span><span class="p">({</span><span class="s1">&#39;Conso&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+        <span class="n">conso_col</span> <span class="o">=</span> <span class="n">conso_col</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">COL</span><span class="p">])[</span><span class="s1">&#39;Conso&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+        <span class="n">conso_col</span><span class="p">[</span><span class="n">COL</span><span class="p">]</span> <span class="o">=</span> <span class="n">conso_col</span><span class="p">[</span><span class="n">COL</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">conso_col</span><span class="p">[</span><span class="n">COL</span><span class="p">]</span> <span class="o">=</span> <span class="n">conso_col</span><span class="p">[</span><span class="n">COL</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">conso_col</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, DOS.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

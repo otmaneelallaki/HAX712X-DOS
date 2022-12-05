@@ -10,6 +10,8 @@ class ChoroFraBy:
     """ Show a choropleth Map of France with the Electricity
     Consumption from 2019 to 2021 """
     
+    def __init__(self) -> None:
+        pass
     
     def createMap(COL):
         

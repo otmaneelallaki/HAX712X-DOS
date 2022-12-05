@@ -7,8 +7,8 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
+   Project.Map
    Project.Prediction
-   Project.Visualisation
 
 Module contents
 ---------------
@@ -17,4 +17,3 @@ Module contents
    :members:
    :undoc-members:
    :show-inheritance:
-   :member-order: bysource

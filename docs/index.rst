@@ -3,10 +3,14 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-French electricity consumption
-==============================
+Welcome to Dos's documentation!
+===============================
 
-.. figure:: ts.gif
+This package was made as a project in the software devlopment course.
+The main goal here is to predict the three sources of energier (electric consumption, Gaz and Nuclear) at France country-wise scale. And also providing an interactive map of France at the city-wise level displaying the yearly average household electricity consumption between 2018 and 2021.
+And because we mainly learn with examples, detailled explanations of the objects and their construction are presented in the gallery.
+
+.. figure:: _static/ts.gif
    :height: 350
    :width: 700
    :scale: 95
@@ -18,9 +22,30 @@ French electricity consumption
    :maxdepth: 2
    :caption: Contents:
 
-   Prediction/Prediction
+Guide
+^^^^^
 
-   Maps/Maps
+.. toctree::
+   :maxdepth: 2
+   :caption: Predection, Data Collection
+
+   Prediction/Prediction
+   Prediction/DataCollection
+
+.. toctree::
+   :maxdepth: 2
+   :caption: interactive card
+
+   Maps/Chro
+
+   Maps/ConsBy
+   
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Examples
+
+   Example/Example
 
 Indices and tables
 ==================
@@ -28,3 +53,4 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
