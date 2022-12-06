@@ -157,14 +157,14 @@ class Data():
         return self.data
 
     def Filnan(self):
-        """ we call this method directly after calling **dataDownload**
-
-        .. note::
-            This is note text. 
+        """ 
+        In this Method we have fill the nan by the mean of two successive observation:
 
         .. warning::
-            This is warning text.
-            """
+            If you use **dataDownloadThis()** method then it's very important
+            to call this method directly, otherwise you will get the data full of *nan*
+            values.
+            """ 
         for nan in range(np.shape(self.data)[0]-1):    # fil nan  2010
             if self.data[["Consommation (MW)"]].isna().iloc[:, 0][nan]:
                 # replace nan by the mean between 2 samples
