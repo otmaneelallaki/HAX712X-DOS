@@ -85,8 +85,8 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>This class create a dataframe which provide
 the French electricity consumption from 2019 to 2021
-by department or regions.
-It uses two data from the following websites:</p>
+by department or regions.</p>
+<p>It uses two data from the following websites:</p>
 <p>INSEE data:
 <a class="reference external" href="https://www.insee.fr/fr/information/5057840">https://www.insee.fr/fr/information/5057840</a></p>
 <p>ENEDIS data:
@@ -94,16 +94,41 @@ It uses two data from the following websites:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="Project.Map.ConsumptionBy.ConsumptionBy.getDataFast">
 <span class="sig-name descname"><span class="pre">getDataFast</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Map/ConsumptionBy.html#ConsumptionBy.getDataFast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Map.ConsumptionBy.ConsumptionBy.getDataFast" title="Permalink to this definition"></a></dt>
-<dd><p>Please use this attribute to get the data quickly from
-the repository</p>
+<dd><p>Take the data that is already created and stored in the ./DataSet repository.
+Please prefer this attribute to get the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>collectivity</strong> (<em>str</em>) – ‘DEP’ or ‘REG’</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>csv file with the consumption by collectivity</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="Project.Map.ConsumptionBy.ConsumptionBy.getDataSlow">
 <span class="sig-name descname"><span class="pre">getDataSlow</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Map/ConsumptionBy.html#ConsumptionBy.getDataSlow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Map.ConsumptionBy.ConsumptionBy.getDataSlow" title="Permalink to this definition"></a></dt>
-<dd><p>Be Carreful! This attribute download the data from the
-internet, the data will be up to date but it can take around
-8 minutes</p>
+<dd><p>Create the data using those from the website specified above.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be Careful! It takes around 8 minutes to create it,
+but the data will be up to date.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>collectivity</strong> (<em>str</em>) – ‘DEP’ or ‘REG’</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>csv file with the consumption by collectivity</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pandas.Series</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

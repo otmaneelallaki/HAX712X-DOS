@@ -82,34 +82,27 @@
 <p>In this part we are going   <a class="reference internal" href="DataCollection.html#datacol"><span class="std std-ref">some disadvantages</span></a>:</p>
 <span class="target" id="module-Project.Prediction.ClassModel"></span><dl class="py class">
 <dt class="sig sig-object py" id="Project.Prediction.ClassModel.Dos">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">Project.Prediction.ClassModel.</span></span><span class="sig-name descname"><span class="pre">Dos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energie</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Dos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Dos" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">Project.Prediction.ClassModel.</span></span><span class="sig-name descname"><span class="pre">Dos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">month</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">day</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Dos"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Dos" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Class features</p>
+<p>Class Dos is  a class that could daily predect and plot three sources
+of three sources of enrergy: Electricity Consumption, Gaz and Nuclear.</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Dos.energie">
-<span class="sig-name descname"><span class="pre">energie</span></span><a class="headerlink" href="#Project.Prediction.ClassModel.Dos.energie" title="Permalink to this definition"></a></dt>
-<dd><p>”
-In this part we are going   <a class="reference internal" href="DataCollection.html#datacol"><span class="std std-ref">Data Collection</span></a>:</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Dos.createFeatures">
-<span class="sig-name descname"><span class="pre">createFeatures</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Dos.createFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Dos.createFeatures" title="Permalink to this definition"></a></dt>
-<dd><p>Create time series features based on time series index.
-qhfbqef</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Dos.fitModel">
-<span class="sig-name descname"><span class="pre">fitModel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Dos.fitModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Dos.fitModel" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Dos.DayPred">
-<span class="sig-name descname"><span class="pre">DayPred</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">month</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">day</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Dos.DayPred"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Dos.DayPred" title="Permalink to this definition"></a></dt>
-<dd><p>Predict confidence scores for samples.
-The confidence score for a sample is proportional to the signed
-distance of that sample to the hyperplane.</p>
+<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Dos.day">
+<span class="sig-name descname"><span class="pre">day</span></span><a class="headerlink" href="#Project.Prediction.ClassModel.Dos.day" title="Permalink to this definition"></a></dt>
+<dd><p>This is the data training, it is the
+output of <a class="reference internal" href="DataCollection.html#datacol"><span class="std std-ref">Data Collection</span></a>.
+:type Data: Dataframe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>energy</strong> – This model predict three sources of</p>
+</dd>
+</dl>
+<p>enrergy: Electricity Consumption, Gaz and Nuclear.</p>
+<blockquote>
+<div><p>0 : Electricity Consumption</p>
+<p>1 : Gaz</p>
+<p>2: Nuclear</p>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -118,13 +111,44 @@ distance of that sample to the hyperplane.</p>
 <li><p><strong>day</strong> (<em>int</em>) – The day for which day we want to predict.</p></li>
 </ul>
 </dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>param Data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Dos.createFeatures">
+<span class="sig-name descname"><span class="pre">createFeatures</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Dos.createFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Dos.createFeatures" title="Permalink to this definition"></a></dt>
+<dd><p>Create time series features based on time series index.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Dos.fitModel">
+<span class="sig-name descname"><span class="pre">fitModel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Dos.fitModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Dos.fitModel" title="Permalink to this definition"></a></dt>
+<dd><p>Automatic process that makes sure our machine learning models have high
+level of accuracy. The Model name is <strong>Boosted Trees</strong> for more
+information please see this <a class="reference external" href="https://xgboost.readthedocs.io/en/stable/tutorials/model.html">referance</a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Dos.DayPred">
+<span class="sig-name descname"><span class="pre">DayPred</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Dos.DayPred"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Dos.DayPred" title="Permalink to this definition"></a></dt>
+<dd><p>Predict confidence scores for samples.
+The confidence score for a sample is proportional to the signed
+distance of that sample to the hyperplane.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reg</strong> – this is the output of <strong>fitModel</strong> .</p>
+</dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="Project.Prediction.ClassModel.Dos.plot">
 <span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">day_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DayDate</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Dos.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Dos.plot" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>This method plot daily energy predection indexing by Time</p>
+</dd></dl>
 
 </dd></dl>
 

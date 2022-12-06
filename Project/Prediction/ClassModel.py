@@ -11,16 +11,40 @@ sns.set()
 
 
 class Dos():
-    """  Class features  """
-
-    def __init__(self, data, energie, year, month, day) -> None:
+    """ 
+    Class Dos is  a class that could daily predect and plot three sources 
+    of three sources of enrergy: Electricity Consumption, Gaz and Nuclear.
+    """
+    def __init__(self, data, energy, year, month, day):
         self.data = data
-        self.energie = energie
+        self.energie = energy
         self.year = year
         self.month = month
         self.day = day
-        """"
-        In this part we are going   :ref:`Data Collection <DataCol>`:
+        """
+        :param Data: This is the data training, it is the 
+        output of :ref:`Data Collection <DataCol>`.
+        :type Data: Dataframe
+
+        :param energy: This model predict three sources of
+        enrergy: Electricity Consumption, Gaz and Nuclear.
+
+                0 : Electricity Consumption
+
+                1 : Gaz
+
+                2: Nuclear
+
+        :type energy: int
+
+        :param Year: The Year for which day we want to predict.
+        :type Year: int
+
+        :param month: The month for which day we want to predict.
+        :type month: int
+
+        :param day: The day for which day we want to predict.
+        :type day: int
         """
 
     def createFeatures(self):
@@ -43,7 +67,10 @@ class Dos():
         return self.data
 
     def fitModel(self):
-        """   """
+        """ Automatic process that makes sure our machine learning models have high 
+        level of accuracy. The Model name is **Boosted Trees** for more 
+        information please see this `referance 
+        <https://xgboost.readthedocs.io/en/stable/tutorials/model.html>`_"""
         target = self.data.columns[self.energie]
         FEATURES = ['dayofyear', 'minute', 'dayofweek', 'month', 'year',
                     'lag1', 'lag2', 'lag3']
@@ -68,14 +95,11 @@ class Dos():
         The confidence score for a sample is proportional to the signed
         distance of that sample to the hyperplane.
 
-        :param Year: The Year for which day we want to predict.
-        :type Year: int
+        :param reg: this is the output of **fitModel** .
+        :type Year: xgboost.sklearn.XGBRegressor
 
-        :param month: The month for which day we want to predict.
-        :type month: int
 
-        :param day: The day for which day we want to predict.
-        :type day: int
+
         """
         liste = []
         for i in range(96):
@@ -109,12 +133,13 @@ class Dos():
         return day_pred, DayDate
 
     def plot(self, day_pred, DayDate):
+        """ This method plot daily energy predection indexing by Time """
         target = self.data.columns[self.energie]
 
         day_pred = day_pred[target].values
         day_pred = pd.DataFrame(day_pred, index=DayDate,
                                 columns=['{}'.format(target)])
-        f, ax = plt.subplots(figsize=(12, 6), dpi=200)∫
+        f, ax = plt.subplots(figsize=(12, 6), dpi=200)
         plt.suptitle('{}-{}-{}, forecasting {}'.format(self.year,
                      self.month, self.day, target), fontsize=24)
         day_pred.plot(ax=ax, rot=90, ylabel='MW', legend="Predicted day ")
