@@ -1,5 +1,5 @@
-Examples
-========
+Examples of ClassModel
+======================
 
 Here an example of how we cloud use the Dos's package:
 

@@ -1,10 +1,11 @@
-Examples
-========
+Examples of ClassModel
+======================
 
 Here an example of how we cloud use the Dos's package:
 
 The Impodtation of the Package:
 ------------------------------- 
+
 ::
 
     >>> from Project.Prediction import ClassModel as md

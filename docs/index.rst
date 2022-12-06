@@ -47,6 +47,8 @@ Guide
 
    Example/Example
 
+   Example/Example2
+
 Indices and tables
 ==================
 
