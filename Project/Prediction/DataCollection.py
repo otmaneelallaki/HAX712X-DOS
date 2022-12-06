@@ -178,14 +178,4 @@ class Data():
         self.data.loc[:, "Consommation (MW)"][nan +
                                               1] = self.data.loc[:, "Consommation (MW)"][nan]
         return self.data
-# %%
-#data = Data()
-# %%
-#ts = data.dataDownload()
-#ts = data.Filnan()
-# %%
 
-# %%
-#ts.to_csv("./Dataset/DataTrining.csv")
-
-# %%
