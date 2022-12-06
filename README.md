@@ -35,7 +35,7 @@ The documentation of this package is available  at `docs/_build//html/index.html
 ## Structure : 
 The `./report` folder contains a jupyter notebook to display different elements like images and data collection.
 ## Test : 
-Tests functions are implemented in the 'Test/test_Project.py' in order to assure the good development of this package.
+Tests functions are implemented in the `Test/test_Project.py` in order to assure the good development of this package.
 ## Beamer : 
 The project will be presented in the form of an oral presentation and an explanatory beamer that will accompany our presentation, you'll find our presentation in `/Beamer` folder.
 
