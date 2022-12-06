@@ -8,6 +8,8 @@ It will also be possible to forecast this consumption according to the source of
 
 These predictions are made possible in part by obtaining very accurate and comprehensive data from the public electricity provider ENEDIS.
 
+The principal data show the consumption in Megawatt-hour of France each 30 minutes and precise the source of electricity.
+
 ## Group Membres
 
 El Allaki Otmane otmane.el-allaki@etu.umontpellier.fr
