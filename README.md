@@ -1,4 +1,11 @@
 # README
+
+## French electricity consumption prediction
+
+The following project aims to provide a forecast of the French electricity consumption on December 8, 2022.
+More generally, the result of our work will allow you to forecast the consumption on the date you choose with a certain accuracy.
+It will also be possible to forecast this consumption according to the source of electricity (nuclear, wind and gas).
+
 ## Group Membres
 
 El Allaki Otmane otmane.el-allaki@etu.umontpellier.fr
@@ -22,3 +29,7 @@ Soufian will take care of the secend Model
 instructions for use and documentation will be completed as the project progresses.
 
 The project will be presented in the form of an oral presentation and an explanatory beamer that will accompany our presentation.
+
+## Instructions for use:
+
+The DOS project use Python language, launch your favorite IDE and type the command .....
