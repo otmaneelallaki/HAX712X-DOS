@@ -3,24 +3,16 @@ import DataCollection
 #mathematical operations
 import numpy as np
 
-#data handling
-
-#plotting
 import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set()
-
-#machine learning and statistical methods
 import statsmodels.api as sm
-
-#dataframe index manipulations
 import datetime
-
-#muting unnecessary warnings if needed
 import warnings
 # %%____________________________________________-
 ts = DataCollection.Data()
-ts = ts.impo() # data from 2019-01-01 00:00:00 to 2022-11-14 23:45:00
+ts.dataDownload() # data from 2019-01-01 00:00:00 to 2022-11-14 23:45:00
+ts = ts.Filnan()
 ts.drop(["Gaz (MW)","Nucléaire (MW)"], axis=1, inplace=True)
 #%%____________________________________________________________
 #visual checking of data. Plotting by Pandas method, drawing axes by Matplotlib
