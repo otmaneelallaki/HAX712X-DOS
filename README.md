@@ -30,7 +30,7 @@ The hatching of the project was made possible by the major use of the following 
 
 ## Thanks
 
-The project is supervised by Joseph Salmon (@josephsalmon) and Benjamin Charlier (@bcharlier).
+The project is supervised by Joseph Salmon (https://github.com/josephsalmon) and Benjamin Charlier (https://github.com/bcharlier).
 The authors thank them.
 
 ## Instructions for use:
