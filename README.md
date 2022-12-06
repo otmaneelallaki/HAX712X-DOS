@@ -41,4 +41,4 @@ The project will be presented in the form of an oral presentation and an explana
 
 ## Thanks
 
-The authors thank Joseph Salmon (https://github.com/josephsalmon) and Benjamin Charlier (https://github.com/bcharlier) who supervised the project.
+The authors thanks Joseph Salmon (https://github.com/josephsalmon) and Benjamin Charlier (https://github.com/bcharlier) who supervised the project.
