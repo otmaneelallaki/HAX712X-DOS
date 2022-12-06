@@ -2,7 +2,6 @@
 
 
 ![](https://github.com/otmaneelallaki/HAX712X-DOS/blob/main/Beamer/carte_de_france.pdf)
-[Source](https://fontmeme.com/signature-fonts/)
 
 
 ## French electricity consumption prediction
