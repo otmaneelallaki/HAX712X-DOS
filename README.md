@@ -6,9 +6,10 @@ The following project aims to provide a forecast of the French electricity consu
 More generally, the result of our work will allow you to forecast the consumption on the date you choose with a certain accuracy.
 It will also be possible to forecast this consumption according to the source of electricity (nuclear, wind and gas).
 
-These predictions are made possible in part by obtaining very accurate and comprehensive data from the public electricity provider ENEDIS.
+These predictions are made possible in part by obtaining very accurate and comprehensive data from the collaboration : Open Data Réseaux Énergies (ODRÉ).
 
 The principal data show the consumption in Megawatt-hour of France each 30 minutes and precise the source of electricity.
+It is available on https://odre.opendatasoft.com/explore/dataset/eco2mix-national-tr/information/?disjunctive.nature&sort=-date_heure
 
 ## Group Membres
 
