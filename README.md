@@ -29,9 +29,9 @@ The Data Collection is available at ` ./Project/DataCollection.py `.
 ## Data Visualization : 
 Some images and additional graphics are available at ` ./Project/Visualization.py` . 
 ## ClassModel : 
-Our main model is availabe on ` ./Project/ClassModel.py`which contains the classes and functions used for fitting the model, you will find more details documentation file .
+Our main model is availabe on ` ./Project/ClassModel.py`which contains the classes and functions used for fitting the model, you will find more details on documentation file .
 ## Documentation : 
-The documentation of this package is available on at `docs/_build//html/index.html` .
+The documentation of this package is available  at `docs/_build//html/index.html` .
 ## Structure : 
 The `./report` folder contains a jupyter notebook to display different elements like images and data collection.
 ## Test : 
