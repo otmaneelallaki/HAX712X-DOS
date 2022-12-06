@@ -18,7 +18,7 @@ This project aims to : <br/>
 -Display a geographical map to describe the energy consumption of cities of France.
 
 ## Installation : 
-All the necessary packages are available at 'requirements.txt' file in the source directory.
+All the necessary packages are available at `requirements.txt` file in the source directory.
 <br/>
 
 Data source :  (https://odre.opendatasoft.com/explore/dataset/eco2mix-national-tr/information/?disjunctive.nature&sort=-date_heure)
