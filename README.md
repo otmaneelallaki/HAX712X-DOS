@@ -1,7 +1,7 @@
 
 
 
-![](https://github.com/otmaneelallaki/HAX712X-DOS/blob/main/Beamer/carte_de_france.pdf)
+![](https://github.com/otmaneelallaki/HAX712X-DOS/blob/main/Beamer/carte_de_france.png)
 
 
 # README
