@@ -1,5 +1,10 @@
 # README
 
+<center>
+![](https://steemitimages.com/DQmayAXp98wA7UoqzyhxhTwfx74ko8vGBm5MJw2nfVdq7AT/signature.rox%20xsmall.png)
+[Source](https://fontmeme.com/signature-fonts/)
+</center>
+
 ## French electricity consumption prediction
 
 The following project aims to provide a forecast of the French electricity consumption on December 8, 2022.
