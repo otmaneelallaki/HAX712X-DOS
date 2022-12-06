@@ -21,13 +21,17 @@ Otmane El Allaki otmane.el-allaki@etu.umontpellier.fr <br/>
 Sofiane Aoues  sofiane.aoues@etu.umontpellier.fr <br/>
 David Czarnecki  david.dzarnecki@etu.umontpellier.fr
 
-# Used tools
+## Used tools
 
 The hatching of the project was made possible by the major use of the following packages:
 - pandas
 - numpy
 - folium
-- 
+
+## Thanks
+
+The project is supervised by Joseph Salmon (@josephsalmon) and Benjamin Charlier (@bcharlier).
+The authors thank them.
 
 ## Instructions for use:
 
