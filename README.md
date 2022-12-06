@@ -30,17 +30,17 @@ All the necessary packages are available at 'requirements.txt' file in the sourc
 
 Data source :  (https://odre.opendatasoft.com/explore/dataset/eco2mix-national-tr/information/?disjunctive.nature&sort=-date_heure)
 ## Project : 
-The executable python files for both of the prediction and visualization are available on '/Project'.
+The executable python files for both of the prediction and visualization are available on `/Project`.
 ## Data Collection : 
-The Data Collection is available at ' ./Project/DataCollection.py '.
+The Data Collection is available at ` ./Project/DataCollection.py `.
 ## Data Visualization : 
-Some images and additional graphics are available at ' ./Project/Visualization.py ' . 
+Some images and additional graphics are available at ` ./Project/Visualization.py` . 
 
 ## Documentation : 
-The documentation of this package is available on at 'docs/_build//html/index.html' .
+The documentation of this package is available on at `docs/_build//html/index.html` .
 ## Structure : 
 The `./report` folder contains a jupyter notebook to display different elements like images and data collection.
 ## Test : 
 Tests functions are implemented in the 'Test/test_Project.py' in order to assure the good development of this package.
 ## Beamer : 
-The project will be presented in the form of an oral presentation and an explanatory beamer that will accompany our presentation, you'll find our presentation in '/Beamer' folder.
+The project will be presented in the form of an oral presentation and an explanatory beamer that will accompany our presentation, you'll find our presentation in `/Beamer` folder.
