@@ -14,6 +14,25 @@ class Dos():
     """ 
     Class Dos is  a class that could daily predect and plot three sources 
     of three sources of enrergy: Electricity Consumption, Gaz and Nuclear.
+
+    
+    :param data: This is the data training, it is the output of :ref:`Data Collection <DataCol>`.
+    :type data: Dataframe
+
+    :param energy: This model predict three sources of energy: Electricity Consumption, Gaz and Nuclear.
+            0 : Electricity Consumption
+            1 : Gaz
+            2: Nuclear
+    :type energy: int
+
+    :param Year: The Year for which day we want to predict.
+    :type Year: int
+
+    :param month: The month for which day we want to predict.
+    :type month: int
+    
+    :param day: The day for which day we want to predict.
+    :type day: int
     """
     def __init__(self, data, energy, year, month, day):
         self.data = data
@@ -21,32 +40,7 @@ class Dos():
         self.year = year
         self.month = month
         self.day = day
-        """
-        :param Data: This is the data training, it is the 
-        output of :ref:`Data Collection <DataCol>`.
-        :type Data: Dataframe
-
-        :param energy: This model predict three sources of
-        enrergy: Electricity Consumption, Gaz and Nuclear.
-
-                0 : Electricity Consumption
-
-                1 : Gaz
-
-                2: Nuclear
-
-        :type energy: int
-
-        :param Year: The Year for which day we want to predict.
-        :type Year: int
-
-        :param month: The month for which day we want to predict.
-        :type month: int
-
-        :param day: The day for which day we want to predict.
-        :type day: int
-        """
-
+        
     def createFeatures(self):
         """
         Create time series features based on time series index.
