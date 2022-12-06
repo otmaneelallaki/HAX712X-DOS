@@ -1,6 +1,3 @@
-<img src="https://github.com/otmaneelallaki/HAX712X-DOS/blob/main/Beamer/carte_de_france.png" width="400" height="350" />
-
-
 # README
 
 
