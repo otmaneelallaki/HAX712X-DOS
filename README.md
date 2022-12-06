@@ -4,7 +4,7 @@
 
 The following project aims to provide a forecast of the French electricity consumption on December 8, 2022.
 More generally, the result of our work will allow you to forecast the consumption on the date you choose with a certain accuracy.
-It will also be possible to forecast this consumption according to the source of electricity (nuclear, wind and gas).
+It will also be possible to forecast this consumption according to the source of electricity (nuclear and gas).
 
 These predictions are based on very accurate and comprehensive data from the collaboration : Open Data Réseaux Énergies (ODRÉ).
 
