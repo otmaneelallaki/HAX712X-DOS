@@ -11,12 +11,14 @@ These predictions are made possible in part by obtaining very accurate and compr
 The principal data show the consumption in Megawatt-hour of France each 30 minutes and precise the source of electricity.
 It is available on https://odre.opendatasoft.com/explore/dataset/eco2mix-national-tr/information/?disjunctive.nature&sort=-date_heure
 
-## Group Membres
+## Authors
 
-El Allaki Otmane otmane.el-allaki@etu.umontpellier.fr
+The prediction was made by El Allaki Otmane and Sofiane Aoues.
+You will also find a program made by David Czarnecki that produces choropleth maps of electricity consumption.
 
+You can reach the authors at the following addresses:
+Otmane El Allaki otmane.el-allaki@etu.umontpellier.fr
 David Czarnecki  david.dzarnecki@etu.umontpellier.fr
-
 Sofiane Aoues  sofiane.aoues@etu.umontpellier.fr
 
 # Workplan
