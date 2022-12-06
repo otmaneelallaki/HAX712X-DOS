@@ -1,7 +1,4 @@
-
-
-
-![](https://github.com/otmaneelallaki/HAX712X-DOS/blob/main/Beamer/carte_de_france.png=100x20)
+<img src="https://github.com/otmaneelallaki/HAX712X-DOS/blob/main/Beamer/carte_de_france.png" width="200" height="200" />
 
 
 # README
