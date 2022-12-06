@@ -19,14 +19,14 @@ Sofiane Aoues  sofiane.aoues@etu.umontpellier.fr <br/>
 David Czarnecki  david.dzarnecki@etu.umontpellier.fr
 
 ## Introduction : 
-This project aims to : \\
+This project aims to : <br/>
 
--Create  a python package allowing any user to predict for a desired day different sources of energy consumption in France. 
+-Create  a python package allowing any user to predict for a desired day different sources of energy consumption in France. <br/>
 -Display a geographical map to describe the energy consumption of cities of France.
 
 ## Installation : 
 All the necessary packages are available at 'requirements.txt' file in the source directory.
-\\
+<br/>
 
 Data source :  (https://odre.opendatasoft.com/explore/dataset/eco2mix-national-tr/information/?disjunctive.nature&sort=-date_heure)
 ## Project : 
