@@ -24,6 +24,10 @@ David Czarnecki  david.dzarnecki@etu.umontpellier.fr
 # Used tools
 
 The hatching of the project was made possible by the major use of the following packages:
+- pandas
+- numpy
+- folium
+- 
 
 ## Instructions for use:
 
