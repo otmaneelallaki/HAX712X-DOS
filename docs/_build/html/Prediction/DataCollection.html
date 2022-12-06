@@ -112,14 +112,12 @@ Model forcast.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="Project.Prediction.DataCollection.Data.Filnan">
 <span class="sig-name descname"><span class="pre">Filnan</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/DataCollection.html#Data.Filnan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.DataCollection.Data.Filnan" title="Permalink to this definition"></a></dt>
-<dd><p>we call this method directly after calling <strong>dataDownload</strong></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This is note text.</p>
-</div>
+<dd><p>In this Method we have fill the nan by the mean of two successive observation:</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This is warning text.</p>
+<p>If you use <strong>dataDownloadThis()</strong> method then it’s very important
+to call this method directly, otherwise you will get the data full of <em>nan</em>
+values.</p>
 </div>
 </dd></dl>
 

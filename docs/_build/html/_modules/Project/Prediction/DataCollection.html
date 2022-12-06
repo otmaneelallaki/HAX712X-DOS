@@ -235,14 +235,14 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span></div>
 
 <div class="viewcode-block" id="Data.Filnan"><a class="viewcode-back" href="../../../Prediction/DataCollection.html#Project.Prediction.DataCollection.Data.Filnan">[docs]</a>    <span class="k">def</span> <span class="nf">Filnan</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; we call this method directly after calling **dataDownload**</span>
-
-<span class="sd">        .. note::</span>
-<span class="sd">            This is note text. </span>
+        <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">        In this Method we have fill the nan by the mean of two successive observation:</span>
 
 <span class="sd">        .. warning::</span>
-<span class="sd">            This is warning text.</span>
-<span class="sd">            &quot;&quot;&quot;</span>
+<span class="sd">            If you use **dataDownloadThis()** method then it&#39;s very important</span>
+<span class="sd">            to call this method directly, otherwise you will get the data full of *nan*</span>
+<span class="sd">            values.</span>
+<span class="sd">            &quot;&quot;&quot;</span> 
         <span class="k">for</span> <span class="n">nan</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>    <span class="c1"># fil nan  2010</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[[</span><span class="s2">&quot;Consommation (MW)&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">][</span><span class="n">nan</span><span class="p">]:</span>
                 <span class="c1"># replace nan by the mean between 2 samples</span>
@@ -256,17 +256,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Consommation (MW)&quot;</span><span class="p">][</span><span class="n">nan</span> <span class="o">+</span>
                                               <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;Consommation (MW)&quot;</span><span class="p">][</span><span class="n">nan</span><span class="p">]</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span></div></div>
-<span class="c1"># %%</span>
-<span class="c1">#data = Data()</span>
-<span class="c1"># %%</span>
-<span class="c1">#ts = data.dataDownload()</span>
-<span class="c1">#ts = data.Filnan()</span>
-<span class="c1"># %%</span>
 
-<span class="c1"># %%</span>
-<span class="c1">#ts.to_csv(&quot;./Dataset/DataTrining.csv&quot;)</span>
-
-<span class="c1"># %%</span>
 </pre></div>
 
            </div>
