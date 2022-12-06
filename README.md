@@ -6,6 +6,8 @@ The following project aims to provide a forecast of the French electricity consu
 More generally, the result of our work will allow you to forecast the consumption on the date you choose with a certain accuracy.
 It will also be possible to forecast this consumption according to the source of electricity (nuclear, wind and gas).
 
+These predictions are made possible in part by obtaining very accurate and comprehensive data from the public electricity provider ENEDIS.
+
 ## Group Membres
 
 El Allaki Otmane otmane.el-allaki@etu.umontpellier.fr
