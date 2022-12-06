@@ -18,8 +18,8 @@ You will also find a program made by David Czarnecki that produces choropleth ma
 
 You can reach the authors at the following addresses: <br/>
 Otmane El Allaki otmane.el-allaki@etu.umontpellier.fr <br/>
-Sofiane Aoues  sofiane.aoues@etu.umontpellier.fr
-David Czarnecki  david.dzarnecki@etu.umontpellier.fr <br/>
+Sofiane Aoues  sofiane.aoues@etu.umontpellier.fr <br/>
+David Czarnecki  david.dzarnecki@etu.umontpellier.fr
 
 # Workplan
 
