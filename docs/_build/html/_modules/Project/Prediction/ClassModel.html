@@ -92,6 +92,25 @@
     <span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">    Class Dos is  a class that could daily predect and plot three sources </span>
 <span class="sd">    of three sources of enrergy: Electricity Consumption, Gaz and Nuclear.</span>
+
+<span class="sd">    </span>
+<span class="sd">    :param data: This is the data training, it is the output of :ref:`Data Collection &lt;DataCol&gt;`.</span>
+<span class="sd">    :type data: Dataframe</span>
+
+<span class="sd">    :param energy: This model predict three sources of energy: Electricity Consumption, Gaz and Nuclear.</span>
+<span class="sd">            0 : Electricity Consumption</span>
+<span class="sd">            1 : Gaz</span>
+<span class="sd">            2: Nuclear</span>
+<span class="sd">    :type energy: int</span>
+
+<span class="sd">    :param Year: The Year for which day we want to predict.</span>
+<span class="sd">    :type Year: int</span>
+
+<span class="sd">    :param month: The month for which day we want to predict.</span>
+<span class="sd">    :type month: int</span>
+<span class="sd">    </span>
+<span class="sd">    :param day: The day for which day we want to predict.</span>
+<span class="sd">    :type day: int</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
@@ -99,32 +118,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">year</span> <span class="o">=</span> <span class="n">year</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">month</span> <span class="o">=</span> <span class="n">month</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">day</span> <span class="o">=</span> <span class="n">day</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        :param Data: This is the data training, it is the </span>
-<span class="sd">        output of :ref:`Data Collection &lt;DataCol&gt;`.</span>
-<span class="sd">        :type Data: Dataframe</span>
-
-<span class="sd">        :param energy: This model predict three sources of</span>
-<span class="sd">        enrergy: Electricity Consumption, Gaz and Nuclear.</span>
-
-<span class="sd">                0 : Electricity Consumption</span>
-
-<span class="sd">                1 : Gaz</span>
-
-<span class="sd">                2: Nuclear</span>
-
-<span class="sd">        :type energy: int</span>
-
-<span class="sd">        :param Year: The Year for which day we want to predict.</span>
-<span class="sd">        :type Year: int</span>
-
-<span class="sd">        :param month: The month for which day we want to predict.</span>
-<span class="sd">        :type month: int</span>
-
-<span class="sd">        :param day: The day for which day we want to predict.</span>
-<span class="sd">        :type day: int</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
+        
 <div class="viewcode-block" id="Dos.createFeatures"><a class="viewcode-back" href="../../../Prediction/Prediction.html#Project.Prediction.ClassModel.Dos.createFeatures">[docs]</a>    <span class="k">def</span> <span class="nf">createFeatures</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Create time series features based on time series index.</span>

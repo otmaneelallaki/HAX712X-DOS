@@ -87,37 +87,20 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class Dos is  a class that could daily predect and plot three sources
 of three sources of enrergy: Electricity Consumption, Gaz and Nuclear.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="Project.Prediction.ClassModel.Dos.day">
-<span class="sig-name descname"><span class="pre">day</span></span><a class="headerlink" href="#Project.Prediction.ClassModel.Dos.day" title="Permalink to this definition"></a></dt>
-<dd><p>This is the data training, it is the
-output of <a class="reference internal" href="DataCollection.html#datacol"><span class="std std-ref">Data Collection</span></a>.
-:type Data: Dataframe</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>energy</strong> – This model predict three sources of</p>
-</dd>
-</dl>
-<p>enrergy: Electricity Consumption, Gaz and Nuclear.</p>
-<blockquote>
-<div><p>0 : Electricity Consumption</p>
-<p>1 : Gaz</p>
-<p>2: Nuclear</p>
-</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>Dataframe</em>) – This is the data training, it is the output of <a class="reference internal" href="DataCollection.html#datacol"><span class="std std-ref">Data Collection</span></a>.</p></li>
+<li><p><strong>energy</strong> (<em>int</em>) – This model predict three sources of energy: Electricity Consumption, Gaz and Nuclear.
+0 : Electricity Consumption
+1 : Gaz
+2: Nuclear</p></li>
 <li><p><strong>Year</strong> (<em>int</em>) – The Year for which day we want to predict.</p></li>
 <li><p><strong>month</strong> (<em>int</em>) – The month for which day we want to predict.</p></li>
 <li><p><strong>day</strong> (<em>int</em>) – The day for which day we want to predict.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Type</dt>
-<dd class="field-even"><p>param Data</p>
-</dd>
 </dl>
-</dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="Project.Prediction.ClassModel.Dos.createFeatures">
 <span class="sig-name descname"><span class="pre">createFeatures</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/Project/Prediction/ClassModel.html#Dos.createFeatures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#Project.Prediction.ClassModel.Dos.createFeatures" title="Permalink to this definition"></a></dt>
