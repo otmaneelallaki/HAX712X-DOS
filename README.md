@@ -1,14 +1,10 @@
 
 
 
-![](https://github.com/otmaneelallaki/HAX712X-DOS/blob/main/Beamer/carte_de_france.png =100x20)
+![](https://github.com/otmaneelallaki/HAX712X-DOS/blob/main/Beamer/carte_de_france.png=100x20)
 
 
 # README
-
-
-![](https://steemitimages.com/DQmayAXp98wA7UoqzyhxhTwfx74ko8vGBm5MJw2nfVdq7AT/signature.rox%20xsmall.png)
-[Source](https://fontmeme.com/signature-fonts/)
 
 
 ## Authors
