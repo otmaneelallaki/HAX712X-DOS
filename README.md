@@ -1,3 +1,6 @@
+![](https://github.com/otmaneelallaki/HAX712X-DOS/blob/main/Beamer/carte_de_france.png=100x20)
+
+
 # README
 
 
@@ -25,7 +28,8 @@ The executable python files for both of the prediction and visualization are ava
 The Data Collection is available at ` ./Project/DataCollection.py `.
 ## Data Visualization : 
 Some images and additional graphics are available at ` ./Project/Visualization.py` . 
-
+## ClassModel : 
+Our main model is availabe on ` ./Project/ClassModel.py`which contains the classes and functions used for fitting the model, you will find more details documentation file .
 ## Documentation : 
 The documentation of this package is available on at `docs/_build//html/index.html` .
 ## Structure : 
